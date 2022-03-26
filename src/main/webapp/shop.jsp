@@ -38,7 +38,22 @@
         <script src="https://kit.fontawesome.com/a36bda6cfe.js" crossorigin="anonymous"></script>
 
     </head>
-    <body class="goto-here">
+      <style>
+        #style-1::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        #style-1::-webkit-scrollbar-thumb {
+            background-color: #000000;
+        }
+        #style-1::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+        
+
+    </style>
+    <body id="style-1" class="goto-here">
         <%
             String name = (String) session.getAttribute("name");
         %>

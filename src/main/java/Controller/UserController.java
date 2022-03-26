@@ -98,7 +98,7 @@ public class UserController extends HttpServlet {
         } else {
             session.setAttribute("isAuthed", true);
 
-            request.setAttribute("message", "Username or password is valid");
+            request.setAttribute("message", "Rất tiếc, mật khẩu của bạn không đúng. Vui lòng kiểm tra lại mật khẩu.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
 
         }

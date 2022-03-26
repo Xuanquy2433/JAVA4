@@ -81,8 +81,8 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="pages-blank.html">
-                                <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+                            <a class="sidebar-link" href="pages-category.jsp">
+                                <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
                             </a>
                         </li>
 

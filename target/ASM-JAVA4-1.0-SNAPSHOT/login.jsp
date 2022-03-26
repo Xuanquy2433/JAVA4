@@ -40,10 +40,25 @@
         <script src="https://kit.fontawesome.com/a36bda6cfe.js" crossorigin="anonymous"></script>
 
     </head>
+    <style>
+        #style-1::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        #style-1::-webkit-scrollbar-thumb {
+            background-color: #000000;
+        }
+        #style-1::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+
+
+    </style>
 
 
 
-    <body class="goto-here">
+    <body id="style-1" class="goto-here">
         <div class="py-1 bg-black">
             <div class="container">
                 <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
@@ -140,7 +155,7 @@
                                                 <div class="signup-link">
                                                     Not a member? <a href="">Signup now</a>
                                                 </div>
-                                                <p style="text-align: center; margin-top: 15px; color: blue"> ${message} </p>
+                                                <p style="text-align: center; margin-top: 15px; color: blue;font-size: 13px"> ${message} </p>
                                             </form>
                                             <form action="RegisterController" method="post" class="signup">
                                                 <div class="field">
