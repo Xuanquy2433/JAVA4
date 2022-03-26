@@ -6,6 +6,7 @@ package Controller;
 
 import DAO.UserDao;
 import DTO.UserDTO;
+import Utils.SendMail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -112,17 +113,33 @@ public class RegisterController extends HttpServlet {
         } else {
             boolean register = userDao.create2(user);
 
-            //sendMail
-//            SendMail sendMail = new SendMail();
-//            try {
-//                sendMail.sendAsHtml(email,
-//                        "Test email",
-//                        "<h2>Java Mail Example</h2><p>hi there!</p>");
-//                //end sendMail
-//            } catch (MessagingException ex) {
-//                Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-            System.out.println("da send mail " + email);
+            SendMail sendMail = new SendMail();
+            try {
+                sendMail.sendAsHtml(email,
+                        "Welcome to Dawn: " + email,
+                        "<div >\n"
+                        + "        <h2 style=\"color: black;\">Welcome to Dawn: </h2>\n"
+                        + "        <p style=\"width: 1000px;color: black;\">We're glad you're here! Check out our getting started guide to start building your\n"
+                        + "            first\n"
+                        + "            cluster.\n"
+                        + "            If you need any help, you can reach out through chat in the Atlas UI or by filing a support ticket.\"\n"
+                        + "            We can't wait to see what you build!.</p>\n"
+                        + "\n"
+                        + "        <a style=\"text-decoration: none;background-color: green;padding: 10px 20px 10px 20px;color: white;\n"
+                        + "            margin-left: 470px; border-radius: 5px;\n"
+                        + "    \" href=\"http://localhost:8080/ASM-JAVA4/login.jsp\">Here</a>\n"
+                        + "\n"
+                        + "    <footer style=\"margin-top: 40px;background-color: rgb(34, 34, 34);color: white;padding: 5px;text-align: center;\n"
+                        + "    font-size: 14px;font-weight: 10;width: 1000px;\n"
+                        + "    \"\n"
+                        + "    \n"
+                        + "    >Copyright © 2022 All rights reserved | This web is made with  by xuanquy</footer>\n"
+                        + "    </div>");
+                //end sendMail
+                System.out.println("da send mail " + email);
+            } catch (MessagingException ex) {
+                Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             HttpSession session = request.getSession();
 
