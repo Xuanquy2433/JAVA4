@@ -37,7 +37,7 @@ public class AdminCategoryController extends HttpServlet {
 
         if (!name.equals("")) {
             System.out.println("image" + image);
-            CategoryDTO dto = new CategoryDTO(name, image, desc);
+            CategoryDTO dto = new CategoryDTO(name, desc, image);
             CategoryDao dao = new CategoryDao();
             boolean isCreate = dao.create(dto);
 

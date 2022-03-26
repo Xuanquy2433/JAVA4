@@ -345,8 +345,8 @@
                             <div class="table-wrapper">
                                 <div class="table-title">
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <h2>Manage <b>Categories</b></h2>
+                                        <div  class="col-sm-6">
+                                            <h2 style="color: white">Manage <b style="color: white">Categories</b></h2>
                                         </div>
                                         <div class="col-sm-6">
                                             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>

@@ -52,7 +52,7 @@
             -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
             background-color: #F5F5F5;
         }
-        
+
 
     </style>
 
@@ -116,7 +116,7 @@
 
                         <li class="nav-item"><a href="login.jsp" style="font-size: 13px;" class="nav-link"><i
                                     class="fa-solid fa-user"></i></a>
-                        <li class="nav-item"><a href=""  style="font-size: 13px;" class="nav-link">Hi, ${name}  </a>
+                        <li class="nav-item"><p   style="font-size: 13px;cursor: pointer" class="nav-link">Hi, ${name}  </p>
 
 
                         </li>

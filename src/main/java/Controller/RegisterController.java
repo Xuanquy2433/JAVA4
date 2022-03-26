@@ -9,6 +9,9 @@ import DTO.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -73,6 +76,7 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         String username = request.getParameter("usernameRes");
@@ -107,6 +111,18 @@ public class RegisterController extends HttpServlet {
             }
         } else {
             boolean register = userDao.create2(user);
+
+            //sendMail
+//            SendMail sendMail = new SendMail();
+//            try {
+//                sendMail.sendAsHtml(email,
+//                        "Test email",
+//                        "<h2>Java Mail Example</h2><p>hi there!</p>");
+//                //end sendMail
+//            } catch (MessagingException ex) {
+//                Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            System.out.println("da send mail " + email);
 
             HttpSession session = request.getSession();
 

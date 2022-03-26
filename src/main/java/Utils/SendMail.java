@@ -4,7 +4,6 @@
 // */
 //package Utils;
 //
-//import com.mysql.cj.Session;
 //import javax.mail.*;
 //import javax.mail.internet.InternetAddress;
 //import javax.mail.internet.MimeMessage;
@@ -15,52 +14,48 @@
 // * @author XuanQuy
 // */
 //public class SendMail {
-//public static void send(String to, String sub,
-//            String msg, final String user, final String pass) {
-//        //create an instance of Properties Class   
-//        Properties props = new Properties();
 //
-//        /* Specifies the IP address of your default mail server
-//     	   for e.g if you are using gmail server as an email sever
-//           you will pass smtp.gmail.com as value of mail.smtp host. 
-//           As shown here in the code. 
-//           Change accordingly, if your email id is not a gmail id
-//         */
-//        props.put("mail.smtp.host", "smtp.gmail.com");
-//        //below mentioned mail.smtp.port is optional
-//        props.put("mail.smtp.port", "587");
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");
+//    private static final String senderEmail = "xuanquy2433@gmail.com";//change with your sender email
+//    private static final String senderPassword = "lxQuy63544@";//change with your sender password
 //
-//        /* Pass Properties object(props) and Authenticator object   
-//           for authentication to Session instance 
-//         */
-//     Session session = Session.getInstance(props,
-//          new javax.mail.Authenticator() {
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(user, pass);
-//            }
-//          });
-//        
-//        
+//    public void sendAsHtml(String to, String title, String html) throws MessagingException {
+//        System.out.println("Sending email to " + to);
 //
-//        try {
+//        Session session = createSession();
 //
-//            /* Create an instance of MimeMessage, 
-// 	      it accept MIME types and headers 
-//             */
-//            MimeMessage message = new MimeMessage((MimeMessage) session);
-//            message.setFrom(new InternetAddress(user));
-//            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-//            message.setSubject(sub);
-//            message.setContent(msg, "text/html");
+//        //create message using session
+//        MimeMessage message = new MimeMessage(session);
+//        prepareEmailMessage(message, to, title, html);
 //
-//            /* Transport class is used to deliver the message to the recipients */
-//            Transport.send(message);
-//
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//        }
+//        //sending message
+//        Transport.send(message);
+//        System.out.println("Done");
 //    }
-//   
+//
+//    private static void prepareEmailMessage(MimeMessage message, String to, String title, String html)
+//            throws MessagingException {
+//        message.setContent(html, "text/html; charset=utf-8");
+//        message.setFrom(new InternetAddress(senderEmail));
+//        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+//        message.setSubject(title);
+//    }
+//
+//    private static Session createSession() {
+//        Properties prop = new Properties();
+//        prop.put("mail.smtp.host", "smtp.gmail.com");
+//        prop.put("mail.smtp.port", "587");
+//        prop.put("mail.smtp.auth", "true");
+//        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+//
+//        //Đăng nhập vào email
+//        Session session = Session.getInstance(prop,
+//                new javax.mail.Authenticator() {
+//            protected PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(senderEmail, senderPassword);
+//            }
+//        });
+//
+//        return session;
+//    }
+//
 //}
