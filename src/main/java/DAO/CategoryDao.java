@@ -9,6 +9,7 @@ import Utils.DBProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,29 +62,22 @@ public class CategoryDao {
         }
     }
 
-    public List<CategoryDTO> getList() {
-        List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
-
+ public List<CategoryDTO> getList() {
+        List<CategoryDTO> ListCat = new ArrayList<CategoryDTO>();
         try {
             String sql = "SELECT * FROM category";
-            PreparedStatement pst = conn.prepareCall(sql);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                CategoryDTO cat = new CategoryDTO();
-                cat.setId(rs.getInt("id"));
-                cat.setName(rs.getString("name"));
-                cat.setDescription(rs.getString("description"));
-                cat.setImage(rs.getString("image"));
-                listCat.add(cat);
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while(rst.next()){
+                CategoryDTO category = new CategoryDTO(rst.getInt(1),rst.getString(2), rst.getString(3),rst.getString(4));
+                ListCat.add(category);
             }
-            return listCat;
+            return ListCat;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return listCat;
-
+        return null;
     }
 
     public boolean update(CategoryDTO cat) {

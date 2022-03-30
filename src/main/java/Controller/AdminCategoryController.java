@@ -8,10 +8,15 @@ import DAO.CategoryDao;
 import DTO.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,61 +36,84 @@ public class AdminCategoryController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
-        String desc = request.getParameter("desc");
 
-        if (!name.equals("")) {
-            System.out.println("image" + image);
-            CategoryDTO dto = new CategoryDTO(name, desc, image);
-            CategoryDao dao = new CategoryDao();
-            boolean isCreate = dao.create(dto);
+        String method = request.getMethod();
+        System.out.println("method" + method);
+        if (method.equals("GET")) {
+            try {
+                // Xử lý get method
+                /**
+                 * b1: lay ds cat => db => dao b2 = set bien attribute => client
+                 */
+                HttpSession session = request.getSession();
+                CategoryDao dao = new CategoryDao();
+                List<CategoryDTO> list = new ArrayList<CategoryDTO>();
+                list = dao.getList();
+                request.setAttribute("list", list);
+                System.out.println(list.size());
+                session.setAttribute("view", "static/pages-category.jsp");
+                request.getRequestDispatcher("static/pages-category.jsp").forward(request, response);
+            } catch (Exception e) {
 
-            if (isCreate) {
-                try ( PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Servlet HomeServlet</title>");
+            }
+        } else {
+            request.setCharacterEncoding("UTF-8");
+            String name = request.getParameter("name").toString();
+            String image = request.getParameter("image");
+            String desc = request.getParameter("desc");
 
-                    out.println("</head>");
-                    out.println("<body style='font-family: Arial, Helvetica, sans-serif;' >");
+            if (!name.equals("")) {
+                System.out.println("image" + image);
+                System.out.println("name:    " + name);
+                CategoryDTO dto = new CategoryDTO(name, desc, image);
+                CategoryDao dao = new CategoryDao();
+                boolean isCreate = dao.create(dto);
 
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Add category sucsess');");
-                    out.println("location='/ASM-JAVA4/static/pages-category.jsp';");
-                    out.println("</script>");
+                if (isCreate) {
+                    try ( PrintWriter out = response.getWriter()) {
+                        /* TODO output your page here. You may use following sample code. */
+                        out.println("<!DOCTYPE html>");
+                        out.println("<html>");
+                        out.println("<head>");
+                        out.println("<title>Servlet HomeServlet</title>");
 
-                    out.println("</div>");
+                        out.println("</head>");
+                        out.println("<body style='font-family: Arial, Helvetica, sans-serif;' >");
 
-                    out.println("</body>");
-                    out.println("</html>");
-                }
-            } else {
-                try ( PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Servlet HomeServlet</title>");
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('Add category sucsess');");
+                        out.println("location='/ASM-JAVA4/AdminCategoryController';");
+                        out.println("</script>");
 
-                    out.println("</head>");
-                    out.println("<body style='font-family: Arial, Helvetica, sans-serif;' >");
+                        out.println("</div>");
 
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Add category fails');");
-                    out.println("location='/ASM-JAVA4/static/pages-category.jsp';");
-                    out.println("</script>");
+                        out.println("</body>");
+                        out.println("</html>");
+                    }
+                } else {
+                    try ( PrintWriter out = response.getWriter()) {
+                        /* TODO output your page here. You may use following sample code. */
+                        out.println("<!DOCTYPE html>");
+                        out.println("<html>");
+                        out.println("<head>");
+                        out.println("<title>Servlet HomeServlet</title>");
 
-                    out.println("</div>");
+                        out.println("</head>");
+                        out.println("<body style='font-family: Arial, Helvetica, sans-serif;' >");
 
-                    out.println("</body>");
-                    out.println("</html>");
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('Add category fails');");
+                        out.println("location='/ASM-JAVA4/AdminCategoryController';");
+                        out.println("</script>");
+
+                        out.println("</div>");
+
+                        out.println("</body>");
+                        out.println("</html>");
+                    }
                 }
             }
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -116,7 +116,7 @@
 
                         <li class="nav-item"><a href="login.jsp" style="font-size: 13px;" class="nav-link"><i
                                     class="fa-solid fa-user"></i></a>
-                        <li class="nav-item"><p   style="font-size: 13px;cursor: pointer" class="nav-link">Hi, ${name}  </p>
+                        <li class="nav-item"><p   style="font-size: 13px;cursor: pointer;margin-bottom: 0" class="nav-link">Hi, ${name}  </p>
 
 
                         </li>

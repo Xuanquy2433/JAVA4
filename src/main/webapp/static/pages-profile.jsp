@@ -68,19 +68,22 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="pages-sign-in.html">
-                                <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+                            <a style="text-decoration: none;
+                                font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminUserController">
+                                <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="pages-sign-up.html">
-                                <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+                            <a style="text-decoration: none;
+                                font-size: 14px"  class="sidebar-link"  href="${pageContext.request.contextPath}/AdminProductController">
+                                <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Products</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="pages-category.jsp">
+                            <a style="text-decoration: none;
+                                font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminCategoryController">
                                 <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
                             </a>
                         </li>
@@ -91,10 +94,9 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="ui-buttons.html">
-                                <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
+                                <i class="align-middle" data-feather="square"></i> <span class="align-middle">Button</span>
                             </a>
                         </li>
-
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="ui-forms.html">
                                 <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
@@ -305,7 +307,7 @@
                                     <a class="dropdown-item" href="dashboard.jsp"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
                                     <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
                                     <div class="dropdown-divider"></div>
-                                    <form class="preview-item-content" method="get" action="../LogoutController" >
+                                     <form class="preview-item-content" method="get" action="${pageContext.request.contextPath}/LogoutController" >
                                         <button class="dropdown-item">Logout</button>
                                     </form>
                                 </div>

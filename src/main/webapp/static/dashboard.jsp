@@ -69,19 +69,19 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="pages-sign-in.html">
-                                <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+                            <a class="sidebar-link" href="${pageContext.request.contextPath}/AdminUserController">
+                                <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="pages-sign-up.html">
-                                <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+                            <a class="sidebar-link"  href="${pageContext.request.contextPath}/AdminProductController">
+                                <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Products</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="pages-category.jsp">
+                            <a class="sidebar-link" href="${pageContext.request.contextPath}/AdminCategoryController">
                                 <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
                             </a>
                         </li>
@@ -92,7 +92,7 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="ui-buttons.html">
-                                <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
+                                <i class="align-middle" data-feather="square"></i> <span class="align-middle">Button</span>
                             </a>
                         </li>
 
