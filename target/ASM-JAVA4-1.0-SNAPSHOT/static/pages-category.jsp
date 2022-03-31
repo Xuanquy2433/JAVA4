@@ -362,7 +362,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped table-hover" id="catTable">
                                     <thead>
                                         <tr>
                                             <th>
@@ -371,21 +371,22 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Image</th>
-                                            <th>Action</th>
+                                            <th  >Name</th>
+                                            <th >Description</th>
+                                            <th class="col" >Image</th>
+                                            <th > Action</th>
                                             <!--<th>Actions</th>-->
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <%
-                                            System.out.println("list: " + request.getAttribute("list"));
-                                            System.out.println("abc: " + request.getAttribute("abc"));
+                                    <%
+                                           System.out.println("list: " + request.getAttribute("list"));
+                                           System.out.println("abc: " + request.getAttribute("abc"));
 //                                            System.out.println("view" + request.getAttribute("view"));
-                                        %>
+                                    %>
+                                    <tbody>
+
                                         <c:forEach  items="${list}" var="cat" >
-                                            <tr>
+                                            <tr data-id="${cat.getId()}">
                                                 <td>
                                                     <span class="custom-checkbox">
                                                         <input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -397,12 +398,15 @@
                                                 <td>${cat.getImage()}</td>
                                                 <!--<td>(171) 555-2222</td>-->
                                                 <td>
-                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditCategory(${cat.getId()}, {
+                                                                'name': '${cat.getName()}',
+                                                                'description': ' ${cat.getDescription()}',
+                                                                'image': '${cat.getImage()}'
+                                                            })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
-
 
                                     </tbody>
                                 </table>
@@ -415,7 +419,7 @@
                                         <li class="page-item active"><a href="#" class="page-link">3</a></li>
                                         <li class="page-item"><a href="#" class="page-link">4</a></li>
                                         <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                        <li class="page-item"><a onclick="abc()" href="#" class="page-link">Next</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -424,13 +428,15 @@
                         <div id="addEmployeeModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="post" action="${pageContext.request.contextPath}/AdminCategoryController" id="categoryForm">
+                                    <form method="post" action="${pageContext.request.contextPath}/AdminCategoryController"   id="categoryForm">
                                         <div class="modal-header">						
-                                            <h4 class="modal-title">Add Category</h4>
+                                            <h4 class="modal-title">View Category</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">					
                                             <div class="form-group">
+
+                                                <input type="hidden" class="form-control" id="txtId" name="id" >
                                                 <label>Name</label>
                                                 <input type="text" id="txtName" name="name"  class="form-control" >
                                             </div>
@@ -449,7 +455,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <button type="submit" class="btn btn-success"   > Add  </button>
+                                            <button type="submit" class="btn btn-success"  > Save  </button>
                                         </div>
                                     </form>
 
@@ -458,40 +464,44 @@
                             </div>
                         </div>
                         <!-- Edit Modal HTML -->
-                        <div id="editEmployeeModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form>
-                                        <div class="modal-header">						
-                                            <h4 class="modal-title">Edit Employee</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">					
-                                            <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <textarea class="form-control" required></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Phone</label>
-                                                <input type="text" class="form-control" required>
-                                            </div>					
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <input type="submit" class="btn btn-info" value="Save">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        <!--                        <div id="editEmployeeModal" class="modal fade">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <form method="post" action="${pageContext.request.contextPath}/AdminCategoryController" id="categoryForm">
+                                                                <div class="modal-header">						
+                                                                    <h4 class="modal-title">Update Category</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">					
+                                                                    <div class="form-group">
+                        
+                                                                        <input type="hidden" class="form-control" name="id" id="txtId"
+                                                                               <label>Name</label>
+                                                                        <input type="text" id="txtNamee" name="name"  class="form-control" >
+                                                                    </div>
+                                                                    <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-name"></span>
+                                                                    <div class="form-group">
+                                                                        <label>Image</label>
+                                                                        <input type="text" id="txtImagee"  name="image" class="form-control" >
+                                                                    </div>
+                                                                    <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-image"></span>
+                                                                    <div class="form-group">
+                                                                        <label>Description</label>
+                                                                        <textarea class="form-control" name="desc" id="txtDescc" ></textarea>
+                                                                    </div>
+                                                                    <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-desc"></span>
+                        
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                                    <button type="submit" class="btn btn-success"  > Save  </button>
+                                                                </div>
+                                                            </form>
+                        
+                        
+                                                        </div>
+                                                    </div>
+                                                </div>-->
                         <!-- Delete Modal HTML -->
                         <div id="deleteEmployeeModal" class="modal fade">
                             <div class="modal-dialog">
@@ -538,7 +548,7 @@
                                         <a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+                                        <a class="text-muted" onclick="abc()"  target="_blank">Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -549,38 +559,22 @@
 
         </div>
 
-        <script>
-
-            let formCategory = document.getElementById("categoryForm")
-
-            formCategory.addEventListener('submit', (event) => {
-                console.log('abc');
-                event.preventDefault()
-
-                const txtName = document.querySelector('#txtName').value;
-                const txtImage = document.querySelector('#txtImage').value;
-                const txtDesc = document.querySelector('#txtDesc').value;
-                const errorName = document.querySelector('#error-name');
-                const errorImage = document.querySelector('#error-image');
-                const errorDesc = document.querySelector('#error-desc');
-                if (txtName === '') {
-                    errorName.innerHTML = "Name required field";
-                } else if (txtImage === '') {
-                    errorImage.innerHTML = "Image required field";
-                } else if (txtDesc === '') {
-                    errorDesc.innerHTML = "Description required field";
-                } else {
-                    event.currentTarget.submit();
-                }
-            })
-
-
-
-        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css" integrity="sha512-8D+M+7Y6jVsEa7RD6Kv/Z7EImSpNpQllgaEIQAtqHcI0H6F4iZknRj0Nx1DCdB+TwBaS+702BGWYC0Ze2hpExQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
-        <script src="${pageContext.request.contextPath}/js/category.js"></script>
+        <!--<script src="./js/category.js"></script>-->
 
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/category.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/js/helpers.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/config.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/css/toast.css"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
 
 
     </body>
