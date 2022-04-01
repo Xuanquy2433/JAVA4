@@ -357,7 +357,7 @@
                                             <h2 style="color: white">Manage <b style="color: white">Categories</b></h2>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
+                                            <a href="#addEmployeeModal" id="btnCreate" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
                                             <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
                                         </div>
                                     </div>
@@ -372,17 +372,17 @@
                                                 </span>
                                             </th>
                                             <th  >Name</th>
-                                            <th >Description</th>
+                                            <th  >Description</th>
                                             <th class="col" >Image</th>
-                                            <th > Action</th>
+                                            <th  > Action</th>
                                             <!--<th>Actions</th>-->
                                         </tr>
                                     </thead>
                                     <%
-                                           System.out.println("list: " + request.getAttribute("list"));
-                                           System.out.println("abc: " + request.getAttribute("abc"));
+                                        System.out.println("list: " + request.getAttribute("list"));
+                                        System.out.println("abc: " + request.getAttribute("abc"));
 //                                            System.out.println("view" + request.getAttribute("view"));
-                                    %>
+%>
                                     <tbody>
 
                                         <c:forEach  items="${list}" var="cat" >
@@ -403,7 +403,11 @@
                                                                 'description': ' ${cat.getDescription()}',
                                                                 'image': '${cat.getImage()}'
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" onclick="DeleteCategory(${cat.getId()}, {
+                                                                'name': '${cat.getName()}',
+                                                                'description': ' ${cat.getDescription()}',
+                                                                'image': '${cat.getImage()}'
+                                                            })" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -431,7 +435,7 @@
                                     <form method="post" action="${pageContext.request.contextPath}/AdminCategoryController"   id="categoryForm">
                                         <div class="modal-header">						
                                             <h4 class="modal-title">View Category</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <button type="button" class="close" data-dismiss="modal"  aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">					
                                             <div class="form-group">
@@ -455,7 +459,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <button type="submit" class="btn btn-success"  > Save  </button>
+                                            <button type="submit" class="btn btn-success"   > Save  </button>
                                         </div>
                                     </form>
 
@@ -564,7 +568,6 @@
         <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
         <!--<script src="./js/category.js"></script>-->
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/category.js"></script>
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/js/helpers.js"></script>
 
@@ -575,6 +578,9 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/css/toast.css"></script>
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/category.js"></script>
+
 
 
     </body>

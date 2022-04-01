@@ -78,7 +78,7 @@ public class CategoryDao {
     public List<CategoryDTO> getList() {
         List<CategoryDTO> ListCat = new ArrayList<CategoryDTO>();
         try {
-            String sql = "SELECT * FROM category order by id asc";
+            String sql = "SELECT * FROM category";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {

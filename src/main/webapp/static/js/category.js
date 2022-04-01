@@ -1,5 +1,7 @@
-
-
+var catModal
+catModal = new bootstrap.Modal(document.getElementById('addEmployeeModal'), {
+    keyboard: false
+})
 document.getElementById("categoryForm").addEventListener('submit', (event) => {
     event.preventDefault();
     const txtName = document.querySelector('#txtName').value
@@ -25,7 +27,7 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
             image: txtImage
         }
         console.log('jsonObj', jsonObj)
-        fetch('/lessonJSP/admin/AdminCategoryController', {
+        fetch('/ASM-JAVA4/AdminCategoryController', {
             method: 'put',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -44,15 +46,15 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
                     $('#addEmployeeModal').modal('hide')
                     //success
                     console.log('response', item)
-                    console.log('okkkkkkkkkkkkk')
                     $.toast({
                         heading: 'Success',
                         text: result.message,
-                        position: 'top-right',
+                        position: 'bottom-right',
                         showHideTransition: 'slide',
                         icon: 'success'
                     })
-//                    location.reload();
+                    console.log('udate thanh cong')
+
                     resetForm();
                     console.log('theRowId', txtId)
                     var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
@@ -68,7 +70,7 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
                                                 </td>
                                                 <td>${item.name}</td>
                                                 <td>${item.description}</td>
-                                                <td>${item.image}</td>
+                                                <td class="col" >${item.image}</td>
                                                 <!--<td>(171) 555-2222</td>-->
                                                 <td>
                                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditCategory(${item.id}, {
@@ -119,8 +121,46 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
                     })
                     .then(function (result) {
                         //success
-                        console.log('response', result)
-                        location.reload();
+                        const item = result.data
+                        //success
+                        $("[data-dismiss=modal]").trigger({type: "click"}); //  close modal
+                        console.log("thissssss")
+                        $.toast({
+                            heading: 'Success',
+                            text: result.message,
+                            position: 'bottom-right',
+                            showHideTransition: 'slide',
+                            icon: 'success'
+                        })
+
+                        console.log('theRowId', txtId)
+                        var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
+                        console.log('remove', theRowId)
+                        theRowId.remove();
+                        $('#catTable tbody tr:first').after(`
+                    <tr data-id="${item.id}">
+                                                <td>
+                                                    <span class="custom-checkbox">
+                                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                                        <label for="checkbox1"></label>
+                                                    </span>
+                                                </td>
+                                                <td>${item.name}</td>
+                                                <td>${item.description}</td>
+                                                <td class="col" >${item.image}</td>
+                                                <!--<td>(171) 555-2222</td>-->
+                                                <td>
+                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditCategory(${item.id}, {
+                                                                'name': '${item.name}',
+                                                                'description': ' ${item.description}',
+                                                                'image': '${item.image}'
+                                                            })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                </td>
+                                            </tr>
+`);
+                        console.log('ADD succsess')
+
                     })
                     .catch(function (error) {
                         //failed
@@ -152,3 +192,85 @@ function EditCategory(id, item) {
     catModal.show()
 }
 
+
+
+function DeleteCategory(id, item) {
+    console.log("id: ", id)
+    event.preventDefault();
+    const txtName = document.querySelector('#txtName').value
+    const txtImage = document.querySelector('#txtImage').value;
+    const txtDescription = document.querySelector('#txtDesc').value
+
+
+    console.log("case delete")
+    const jsonObj = {
+        id: Number(id),
+        name: txtName,
+        description: txtDescription,
+        image: txtImage
+    }
+    console.log('jsonObj', jsonObj)
+    fetch('/ASM-JAVA4/AdminCategoryController', {
+        method: 'delete',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonObj)
+    })
+            .then(function (response) {
+                console.log('response', response)
+                return response.json();
+            })
+            .then(function (result) {
+                const item = result.data
+                //success
+                $('#addEmployeeModal').modal('hide')
+                //success
+                console.log('response', item)
+                $.toast({
+                    heading: 'Success',
+                    text: result.message,
+                    position: 'bottom-right',
+                    showHideTransition: 'slide',
+                    icon: 'success'
+                })
+                console.log('udate thanh cong')
+
+                resetForm();
+                console.log('theRowId', txtId)
+                var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
+                console.log('remove', theRowId)
+                theRowId.remove();
+                $('#catTable tbody tr:first').after(`
+                    <tr data-id="${item.id}">
+                                                <td>
+                                                    <span class="custom-checkbox">
+                                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                                        <label for="checkbox1"></label>
+                                                    </span>
+                                                </td>
+                                                <td>${item.name}</td>
+                                                <td>${item.description}</td>
+                                                <td class="col" >${item.image}</td>
+                                                <!--<td>(171) 555-2222</td>-->
+                                                <td>
+                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditCategory(${item.id}, {
+                                                                'name': '${item.name}',
+                                                                'description': ' ${item.description}',
+                                                                'image': '${item.image}'
+                                                            })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                </td>
+                                            </tr>
+`);
+
+                resetForm()
+
+            })
+            .catch(function (error) {
+                //failed
+                console.log('Request failed', error);
+            })
+
+}
