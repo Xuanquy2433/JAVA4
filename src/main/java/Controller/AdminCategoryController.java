@@ -79,7 +79,7 @@ public class AdminCategoryController extends HttpServlet {
                 boolean isCreate = dao.update(cat);
                 System.err.println("isCreate" + isCreate);
                 if (isCreate) {
-                    person.put("message", "cập nhật thành công");
+                    person.put("message", "Cập nhật thành công");
                     // lay thong tin category vừa tạo
                     CategoryDTO detail = dao.getDetailByid(cat.getId());
                     person.put("data", detail);
@@ -93,6 +93,39 @@ public class AdminCategoryController extends HttpServlet {
                 return;
 
             }
+//        } else if (method.equals("DELETE")) {
+//            System.out.println("Deleteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+//            //chuc nang delete
+//            String body = GlobalFunc.parseBody(request);
+//            Gson g = new Gson();
+//            CategoryDTO cat = g.fromJson(body, CategoryDTO.class);
+//            String name = cat.getName();
+//            String des = cat.getDescription();
+//            String image = cat.getImage();
+//            HashMap<String, Object> person
+//                    = new HashMap<String, Object>();
+//            response.setContentType("application/json");
+//            response.setCharacterEncoding("UTF-8");
+//            if (!name.equals("") && !des.equals("")) {
+//                CategoryDTO dto = new CategoryDTO(name, des, image);
+//                CategoryDao dao = new CategoryDao();
+//                boolean isCreate = dao.dalete(cat.getId());
+//                System.err.println("isDelete" + isCreate);
+//                if (isCreate) {
+//                    person.put("message", "Delete thành công");
+//                    // lay thong tin category vừa tạo
+//                    CategoryDTO detail = dao.getDetailByid(cat.getId());
+//                    person.put("data", detail);
+//                    String json = new Gson().toJson(person);
+//                    response.getWriter().write(json);
+//                    return;
+//                }
+//
+//                String json = new Gson().toJson(person);
+//                response.getWriter().write(json);
+//                return;
+//
+//            }
         } else {
             //case post
             /**
@@ -117,10 +150,10 @@ public class AdminCategoryController extends HttpServlet {
                 CategoryDao dao = new CategoryDao();
                 int isCreate = dao.create(dto);
                 if (isCreate > 0) {
-                    person.put("message", "tạo thành công");
+                    person.put("message", "Tạo thành công");
                     // lay thong tin category vua tao
                     CategoryDTO detail = dao.getDetailByid(isCreate);
-                    person.put("message", "tạo thành công");
+                    person.put("message", "Tạo thành công");
                     person.put("data", detail);
                 }
                 String json = new Gson().toJson(person);
@@ -134,7 +167,6 @@ public class AdminCategoryController extends HttpServlet {
             }
             System.out.println("go here" + body);
             return;
-
 
         }
     }
@@ -177,38 +209,7 @@ public class AdminCategoryController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Deleteeeeeeeeee");
-        //chuc nang update
-        String body = GlobalFunc.parseBody(request);
-        Gson g = new Gson();
-        CategoryDTO cat = g.fromJson(body, CategoryDTO.class);
-        String name = cat.getName();
-        String des = cat.getDescription();
-        String image = cat.getImage();
-        HashMap<String, Object> person
-                = new HashMap<String, Object>();
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        if (!name.equals("") && !des.equals("")) {
-            CategoryDTO dto = new CategoryDTO(name, des, image);
-            CategoryDao dao = new CategoryDao();
-            boolean isCreate = dao.update(cat);
-            System.err.println("isCreate" + isCreate);
-            if (isCreate) {
-                person.put("message", "cập nhật thành công");
-                // lay thong tin category vừa tạo
-                CategoryDTO detail = dao.getDetailByid(cat.getId());
-                person.put("data", detail);
-                String json = new Gson().toJson(person);
-                response.getWriter().write(json);
-                return;
-            }
-
-            String json = new Gson().toJson(person);
-            response.getWriter().write(json);
-            return;
-
-        }
+        processRequest(request, response);
     }
 
     /**
