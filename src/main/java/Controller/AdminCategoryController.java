@@ -62,15 +62,14 @@ public class AdminCategoryController extends HttpServlet {
             }
         } else if (method.equals("PUT")) {
             System.out.println("Puttttttttttttttttttttttttttttttttttttttttttttttttttttt");
-            //chuc nang update
+            // chuc nang update
             String body = GlobalFunc.parseBody(request);
             Gson g = new Gson();
             CategoryDTO cat = g.fromJson(body, CategoryDTO.class);
             String name = cat.getName();
             String des = cat.getDescription();
             String image = cat.getImage();
-            HashMap<String, Object> person
-                    = new HashMap<String, Object>();
+            HashMap<String, Object> person = new HashMap<String, Object>();
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             if (!name.equals("") && !des.equals("")) {
@@ -93,41 +92,36 @@ public class AdminCategoryController extends HttpServlet {
                 return;
 
             }
-//        } else if (method.equals("DELETE")) {
-//            System.out.println("Deleteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-//            //chuc nang delete
-//            String body = GlobalFunc.parseBody(request);
-//            Gson g = new Gson();
-//            CategoryDTO cat = g.fromJson(body, CategoryDTO.class);
-//            String name = cat.getName();
-//            String des = cat.getDescription();
-//            String image = cat.getImage();
-//            HashMap<String, Object> person
-//                    = new HashMap<String, Object>();
-//            response.setContentType("application/json");
-//            response.setCharacterEncoding("UTF-8");
-//            if (!name.equals("") && !des.equals("")) {
-//                CategoryDTO dto = new CategoryDTO(name, des, image);
-//                CategoryDao dao = new CategoryDao();
-//                boolean isCreate = dao.dalete(cat.getId());
-//                System.err.println("isDelete" + isCreate);
-//                if (isCreate) {
-//                    person.put("message", "Delete thành công");
-//                    // lay thong tin category vừa tạo
-//                    CategoryDTO detail = dao.getDetailByid(cat.getId());
-//                    person.put("data", detail);
-//                    String json = new Gson().toJson(person);
-//                    response.getWriter().write(json);
-//                    return;
-//                }
-//
-//                String json = new Gson().toJson(person);
-//                response.getWriter().write(json);
-//                return;
-//
-//            }
+        } else if (method.equals("DELETE")) {
+            System.out.println("Deleteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+            // chuc nang delete
+            String body = GlobalFunc.parseBody(request);
+            Gson g = new Gson();
+            HashMap<String, Object> person = new HashMap<String, Object>();
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+
+            CategoryDTO cat = g.fromJson(body, CategoryDTO.class);
+            int id = cat.getId();
+
+            CategoryDao dao = new CategoryDao();
+            boolean isCreate = dao.delete(id);
+            System.err.println("isDelete" + isCreate);
+            if (isCreate) {
+                person.put("message", "Delete thành công");
+                // lay thong tin category vừa tạo
+                String json = new Gson().toJson(person);
+                person.put("message", "Delete thành công");
+                response.getWriter().write(json);
+                return;
+            }
+
+            String json = new Gson().toJson(person);
+            response.getWriter().write(json);
+            return;
+
         } else {
-            //case post
+            // case post
             /**
              * b1: parse dữ liệu từ user JSON b2 dùng Gjson convert json to
              * object b3: thêm du lieu xuong db và get status tra ve b4: tra ra
@@ -141,8 +135,7 @@ public class AdminCategoryController extends HttpServlet {
             String name = cat.getName();
             String des = cat.getDescription();
             String image = cat.getImage();
-            HashMap<String, Object> person
-                    = new HashMap<String, Object>();
+            HashMap<String, Object> person = new HashMap<String, Object>();
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             if (!name.equals("") && !des.equals("")) {
@@ -171,7 +164,8 @@ public class AdminCategoryController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

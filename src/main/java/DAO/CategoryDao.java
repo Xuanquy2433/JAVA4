@@ -113,21 +113,39 @@ public class CategoryDao {
         return false;
     }
 
-    public boolean dalete(int id) {
-        CategoryDTO cat = new CategoryDTO();
+//    public boolean dalete(int id) {
+//        CategoryDTO cat = new CategoryDTO();
+//        try {
+//            String sql = "delete from category where  id = ?";
+//            PreparedStatement pst = conn.prepareCall(sql);
+//            pst.setInt(1, cat.getId());
+//
+//            int rs = pst.executeUpdate();
+//            if (rs > 0) {
+//                return true;
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
+    
+    public boolean delete(int id) {
+        boolean result = false;
         try {
-            String sql = "delete from category where  id = ?";
-            PreparedStatement pst = conn.prepareCall(sql);
-            pst.setInt(1, cat.getId());
-
-            int rs = pst.executeUpdate();
-            if (rs > 0) {
-                return true;
+            String sql = "DELETE from category where id=?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, id);
+            int ketqua = pst.executeUpdate();
+            if (ketqua > 0) {
+                result = true;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+
+        return result;
     }
 }

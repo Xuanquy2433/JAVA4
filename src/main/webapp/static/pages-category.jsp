@@ -380,8 +380,6 @@
                                     </thead>
                                     <%
                                         System.out.println("list: " + request.getAttribute("list"));
-                                        System.out.println("abc: " + request.getAttribute("abc"));
-//                                            System.out.println("view" + request.getAttribute("view"));
                                     %>
                                     <tbody>
 
@@ -403,7 +401,7 @@
                                                                 'description': ` ${cat.getDescription()}`,
                                                                 'image': '${cat.getImage()}'
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModal5" class="delete" onclick="DeleteCategory(${cat.getId()})"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
