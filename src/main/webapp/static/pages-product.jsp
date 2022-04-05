@@ -10,6 +10,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,21 +91,21 @@
 
                         <li class="sidebar-item">
                             <a style="text-decoration: none;
-                                font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminUserController">
+                               font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminUserController">
                                 <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item active">
                             <a style="text-decoration: none;
-                                font-size: 14px"  class="sidebar-link"  href="${pageContext.request.contextPath}/AdminProductController">
+                               font-size: 14px"  class="sidebar-link"  href="${pageContext.request.contextPath}/AdminProductController">
                                 <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Products</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
                             <a style="text-decoration: none;
-                                font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminCategoryController">
+                               font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminCategoryController">
                                 <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
                             </a>
                         </li>
@@ -113,9 +114,9 @@
                             Tools & Components
                         </li>
 
-                         <li class="sidebar-item">
+                        <li class="sidebar-item">
                             <a  style="text-decoration: none;
-                               font-size: 14px" class="sidebar-link" href="ui-buttons.html">
+                                font-size: 14px" class="sidebar-link" href="${pageContext.request.contextPath}/static/ui-buttons.html">
                                 <i class="align-middle" data-feather="square"></i> <span class="align-middle">Button</span>
                             </a>
                         </li>
@@ -336,7 +337,7 @@
                                     <a style="font-size: 14px" class="dropdown-item" href="dashboard.jsp"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
                                     <a style="font-size: 14px" class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
                                     <div class="dropdown-divider"></div>
-                                     <form class="preview-item-content" method="get" action="${pageContext.request.contextPath}/LogoutController" >
+                                    <form class="preview-item-content" method="get" action="${pageContext.request.contextPath}/LogoutController" >
                                         <button class="dropdown-item">Logout</button>
                                     </form>
                                 </div>
@@ -348,7 +349,7 @@
                 <main style="padding: 0; width: 100%"  class="content">
                     <div class="container-fluid p-0">
 
-                        <div class="container">
+                        <div class="container" style="max-width: 1400px">
                             <div class="table-wrapper">
                                 <div class="table-title">
                                     <div class="row">
@@ -356,12 +357,12 @@
                                             <h2 style="color: white">Manage <b style="color: white">Product</b></h2>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                                            <a href="#addEmployeeModal" id="btnCreate" class="btn btn-success" onclick="ResetValue()" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                                            <a href="#deleteEmployeeModalll"  class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped table-hover" id="catTable">
                                     <thead>
                                         <tr>
                                             <th>
@@ -370,19 +371,21 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Image</th>
-                                            <th>Action</th>
+                                            <th  >Name</th>
+                                            <th class="col" >Image</th>
+                                            <th  >Price</th>
+                                            <th  >Description</th>
+                                            <th  > Action</th>
                                             <!--<th>Actions</th>-->
                                         </tr>
                                     </thead>
+                                    <%
+                                        System.out.println("list: " + request.getAttribute("list"));
+                                    %>
                                     <tbody>
-                                        <%
-                                            System.out.println("list: " + request.getAttribute("list"));
-                                        %>
+
                                         <c:forEach  items="${list}" var="cat" >
-                                            <tr>
+                                            <tr data-id="${cat.getId()}">
                                                 <td>
                                                     <span class="custom-checkbox">
                                                         <input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -390,12 +393,21 @@
                                                     </span>
                                                 </td>
                                                 <td>${cat.getName()}</td>
-                                                <td>${cat.getDescription()}</td>
                                                 <td>${cat.getImage()}</td>
+                                                <td>${cat.getPrice()}</td>
+                                                <td>${cat.getDescription()}</td>
+
                                                 <!--<td>(171) 555-2222</td>-->
                                                 <td>
-                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditProduct(${cat.getId()}, {
+                                                                'name': '${cat.getName()}',
+                                                                'image': '${cat.getImage()}',
+                                                                'price': '${cat.getPrice()}',
+                                                                'description': ` ${cat.getDescription()}`,
+
+                                                            })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                    <a href="#deleteEmployeeModalll" class="delete" onclick="DeleteProduct(${cat.getId()})"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <!--<a onclick="onDlt(${cat.getId()})" > click </a>-->
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -411,7 +423,7 @@
                                         <li class="page-item active"><a href="#" class="page-link">3</a></li>
                                         <li class="page-item"><a href="#" class="page-link">4</a></li>
                                         <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                        <li class="page-item"><a onclick="abc()" href="#" class="page-link">Next</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -420,13 +432,15 @@
                         <div id="addEmployeeModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="post" action="../AdminCategoryController" id="categoryForm">
+                                    <form method="post" action="${pageContext.request.contextPath}/AdminCategoryController"   id="productForm">
                                         <div class="modal-header">						
-                                            <h4 class="modal-title">Add Product</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">View Product</h4>
+                                            <button type="button" class="close" data-dismiss="modal"  aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">					
                                             <div class="form-group">
+
+                                                <input type="hidden" class="form-control" id="txtId" name="id" >
                                                 <label>Name</label>
                                                 <input type="text" id="txtName" name="name"  class="form-control" >
                                             </div>
@@ -437,6 +451,11 @@
                                             </div>
                                             <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-image"></span>
                                             <div class="form-group">
+                                                <label>Price</label>
+                                                <input type="text" id="txtPrice"  name="price" class="form-control" >
+                                            </div>
+                                            <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-price"></span>
+                                            <div class="form-group">
                                                 <label>Description</label>
                                                 <textarea class="form-control" name="desc" id="txtDesc" ></textarea>
                                             </div>
@@ -445,7 +464,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <button type="submit" class="btn btn-success"   > Add  </button>
+                                            <button type="submit" class="btn btn-success"   > Save  </button>
                                         </div>
                                     </form>
 
@@ -453,48 +472,14 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Edit Modal HTML -->
-                        <div id="editEmployeeModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form>
-                                        <div class="modal-header">						
-                                            <h4 class="modal-title">Edit Product</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">					
-                                            <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <textarea class="form-control" required></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Phone</label>
-                                                <input type="text" class="form-control" required>
-                                            </div>					
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <input type="submit" class="btn btn-info" value="Save">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+
                         <!-- Delete Modal HTML -->
                         <div id="deleteEmployeeModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <form>
                                         <div class="modal-header">						
-                                            <h4 class="modal-title">Delete Employee</h4>
+                                            <h4 class="modal-title">Delete Product</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">					
@@ -534,7 +519,7 @@
                                         <a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+                                        <a class="text-muted" onclick="abc()"  target="_blank">Terms</a>
                                     </li>
                                 </ul>
                             </div>
@@ -545,37 +530,23 @@
 
         </div>
 
-        <script>
-
-            let formCategory = document.getElementById("categoryForm")
-
-            formCategory.addEventListener('submit', (event) => {
-                console.log('abc');
-                event.preventDefault()
-
-                const txtName = document.querySelector('#txtName').value;
-                const txtImage = document.querySelector('#txtImage').value;
-                const txtDesc = document.querySelector('#txtDesc').value;
-                const errorName = document.querySelector('#error-name');
-                const errorImage = document.querySelector('#error-image');
-                const errorDesc = document.querySelector('#error-desc');
-                if (txtName === '') {
-                    errorName.innerHTML = "Name required field";
-                } else if (txtImage === '') {
-                    errorImage.innerHTML = "Image required field";
-                } else if (txtDesc === '') {
-                    errorDesc.innerHTML = "Description required field";
-                } else {
-                    event.currentTarget.submit();
-                }
-            })
-
-
-
-        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css" integrity="sha512-8D+M+7Y6jVsEa7RD6Kv/Z7EImSpNpQllgaEIQAtqHcI0H6F4iZknRj0Nx1DCdB+TwBaS+702BGWYC0Ze2hpExQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
-        <script src="${pageContext.request.contextPath}/js/category.js"></script>
+        <!--<script src="./js/category.js"></script>-->
+
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/js/helpers.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/config.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/css/toast.css"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product.js"></script>
 
 
 

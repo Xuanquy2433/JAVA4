@@ -349,7 +349,7 @@
                 <main style="padding: 0; width: 100%"  class="content">
                     <div class="container-fluid p-0">
 
-                        <div class="container">
+                        <div class="container" style="max-width: 1400px">
                             <div class="table-wrapper">
                                 <div class="table-title">
                                     <div class="row">
@@ -357,8 +357,8 @@
                                             <h2 style="color: white">Manage <b style="color: white">Categories</b></h2>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a href="#addEmployeeModal" id="btnCreate" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
-                                            <a href="#deleteEmployeeModal"  class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                                            <a href="#addEmployeeModal" id="btnCreate" class="btn btn-success" onclick="ResetValue()" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
+                                            <a href="#deleteEmployeeModalll"  class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
                                         </div>
                                     </div>
                                 </div>
@@ -401,7 +401,8 @@
                                                                 'description': ` ${cat.getDescription()}`,
                                                                 'image': '${cat.getImage()}'
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal5" class="delete" onclick="DeleteCategory(${cat.getId()})"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModalll" class="delete" onclick="DeleteCategory(${cat.getId()})"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <!--<a onclick="onDlt(${cat.getId()})" > click </a>-->
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -556,6 +557,14 @@
             </div>
 
         </div>
+
+        <script>
+            function  ResetValue() {
+                document.querySelector('#txtName').value = ""
+                document.querySelector('#txtImage').value = ""
+                document.querySelector('#txtDesc').value = ""
+            }
+        </script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css" integrity="sha512-8D+M+7Y6jVsEa7RD6Kv/Z7EImSpNpQllgaEIQAtqHcI0H6F4iZknRj0Nx1DCdB+TwBaS+702BGWYC0Ze2hpExQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
