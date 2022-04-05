@@ -4,7 +4,9 @@
  */
 package Controller;
 
+import DAO.CategoryDao;
 import DAO.ProductDao;
+import DTO.CategoryDTO;
 import DTO.ProductDTO;
 import Utils.GlobalFunc;
 import com.google.gson.Gson;
@@ -47,10 +49,17 @@ public class AdminProductController extends HttpServlet {
                  */
                 HttpSession session = request.getSession();
                 ProductDao dao = new ProductDao();
+                CategoryDao catDao = new CategoryDao();
+
                 List<ProductDTO> list = new ArrayList<ProductDTO>();
+                List<CategoryDTO> cats = new ArrayList<CategoryDTO>();
+
                 list = dao.getList();
+                cats = catDao.getList();
                 request.setAttribute("list", list);
+                request.setAttribute("catList", cats);
                 System.out.println(list.size());
+                System.out.println("danh sachh: "+list);
                 session.setAttribute("view", "static/pages-product.jsp");
                 request.getRequestDispatcher("static/pages-product.jsp").forward(request, response);
             } catch (Exception e) {
@@ -59,18 +68,23 @@ public class AdminProductController extends HttpServlet {
         } else if (method.equals("PUT")) {
             System.out.println("Puttttttttttttttttttttttttttttttttttttttttttttttttttttt");
             // chuc nang update
+            System.out.println("chk");
             String body = GlobalFunc.parseBody(request);
             Gson g = new Gson();
             ProductDTO cat = g.fromJson(body, ProductDTO.class);
             String name = cat.getName();
-            int price = cat.getPrice();
             String des = cat.getDescription();
+            int price = cat.getPrice();
             String image = cat.getImage();
+            int categoryId = cat.getCategoryId();
+            
+            System.out.println("categortyyy:: "+ categoryId);
+
             HashMap<String, Object> person = new HashMap<String, Object>();
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             if (!name.equals("") && !des.equals("")) {
-                ProductDTO dto = new ProductDTO(name, image, price, des);
+                ProductDTO dto = new ProductDTO(name, image, price, des, categoryId);
                 ProductDao dao = new ProductDao();
                 boolean isCreate = dao.update(cat);
                 System.err.println("isCreate" + isCreate);
@@ -132,11 +146,13 @@ public class AdminProductController extends HttpServlet {
             String des = cat.getDescription();
             int price = cat.getPrice();
             String image = cat.getImage();
+            int categoryId = cat.getCategoryId();
+
             HashMap<String, Object> person = new HashMap<String, Object>();
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             if (!name.equals("") && !des.equals("")) {
-                ProductDTO dto = new ProductDTO(name, image, price, des);
+                ProductDTO dto = new ProductDTO(name, image, price, des, categoryId);
                 ProductDao dao = new ProductDao();
                 int isCreate = dao.create(dto);
                 if (isCreate > 0) {

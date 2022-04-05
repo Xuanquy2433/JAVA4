@@ -27,12 +27,13 @@ public class ProductDao {
         boolean result = false;
         int id = 0;
         try {
-            String sql = "INSERT INTO product(name, image, price, description) VALUES(?, ?, ?,?)";
+            String sql = "INSERT INTO product(name, image, price, description,categoryId) VALUES(?, ?,?, ?,?)";
             PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, cat.getName());
             pst.setString(2, cat.getImage());
             pst.setInt(3, cat.getPrice());
             pst.setString(4, cat.getDescription());
+            pst.setInt( 5, cat.getCategoryId());
             if (pst.executeUpdate() > 0) {
                 // Retrieves any auto-generated keys created as a result of executing this Statement object
                 ResultSet generatedKeys = pst.getGeneratedKeys();
@@ -65,6 +66,7 @@ public class ProductDao {
                 cat.setImage(rs.getString("image"));
                 cat.setPrice(rs.getInt("price"));
                 cat.setDescription(rs.getString("description"));
+                cat.setCategoryId(rs.getInt("categoryId"));
             }
             return cat;
 
@@ -82,7 +84,7 @@ public class ProductDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5));
+                ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5), rst.getInt(6));
                 ListCat.add(product);
             }
             return ListCat;
@@ -95,13 +97,14 @@ public class ProductDao {
 
     public boolean update(ProductDTO cat) {
         try {
-            String sql = "update  product set name = ? ,image=?, price = ? ,description =? where  id = ?";
+            String sql = "update  product set name = ? ,image=?, price = ? ,description =? , categoryId = ? where  id = ?";
             PreparedStatement pst = conn.prepareCall(sql);
             pst.setString(1, cat.getName());
             pst.setString(2, cat.getImage());
             pst.setInt(3, cat.getPrice());
             pst.setString(4, cat.getDescription());
-            pst.setInt(5, cat.getId());
+            pst.setInt(5, cat.getCategoryId());
+            pst.setInt(6, cat.getId());
 
             int rs = pst.executeUpdate();
             if (rs > 0) {

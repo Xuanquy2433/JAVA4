@@ -14,12 +14,16 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
     const txtImage = document.querySelector('#txtImage').value;
     const txtDescription = document.querySelector('#txtDesc').value
     const txtPrice = document.querySelector('#txtPrice').value
+    const categoryId = document.querySelector('#category').value
+
+
 
     const txtId = document.querySelector('#txtId').value || null;
     const errorName = document.querySelector('#error-name')
     const errorDes = document.querySelector('#error-desc')
     const errorImage = document.querySelector('#error-image');
     const errorPrice = document.querySelector('#error-price');
+
     if (txtId) {
 //case update
         console.log("case update")
@@ -61,6 +65,8 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                         showHideTransition: 'slide',
                         icon: 'success'
                     })
+
+                    console.log("abcccc")
                     console.log('udate thanh cong')
                     resetForm();
                     console.log('theRowId', txtId)
@@ -79,8 +85,8 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                                                 <td>${item.image}</td>
                                                 <td>${item.price}</td>
                                                 <td>${item.description}</td>
-
-                                                <!--<td>(171) 555-2222</td>-->
+                                                <td>${item.categpryId}</td>
+                                               
                                                 <td>
                                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditProduct(${item.id}, {
                                                                 'name': '${item.name}',
@@ -105,6 +111,8 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
     } else {
 //case post
         console.log("case post")
+        console.log("id:" + categoryId)
+
         if (txtName === '') {
             errorName.innerHTML = "Name required"
         } else if (txtImage === '') {
@@ -121,6 +129,7 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                 image: txtImage,
                 price: txtPrice,
                 description: txtDescription,
+                categoryId: Number(categoryId)
             }
 
             fetch('/ASM-JAVA4/AdminProductController', {
@@ -166,6 +175,7 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                                                 <td>${item.image}</td>
                                                 <td>${item.price}</td>
                                                 <td>${item.description}</td>
+                                                <td>${item.categpryId}</td>
 
                                                 <!--<td>(171) 555-2222</td>-->
                                                 <td>

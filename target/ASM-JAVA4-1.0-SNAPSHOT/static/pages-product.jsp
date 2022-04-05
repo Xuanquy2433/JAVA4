@@ -375,6 +375,7 @@
                                             <th class="col" >Image</th>
                                             <th  >Price</th>
                                             <th  >Description</th>
+                                            <th  >Category</th>
                                             <th  > Action</th>
                                             <!--<th>Actions</th>-->
                                         </tr>
@@ -396,6 +397,7 @@
                                                 <td>${cat.getImage()}</td>
                                                 <td>${cat.getPrice()}</td>
                                                 <td>${cat.getDescription()}</td>
+                                                <td>${cat.getCategoryId()}</td>
 
                                                 <!--<td>(171) 555-2222</td>-->
                                                 <td>
@@ -403,7 +405,8 @@
                                                                 'name': '${cat.getName()}',
                                                                 'image': '${cat.getImage()}',
                                                                 'price': '${cat.getPrice()}',
-                                                                'description': ` ${cat.getDescription()}`,
+                                                                'description': `${cat.getDescription()}`,
+                                                                'categoryId': ` ${cat.getCategoryId()}`,
 
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                                     <a href="#deleteEmployeeModalll" class="delete" onclick="DeleteProduct(${cat.getId()})"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -460,7 +463,22 @@
                                                 <textarea class="form-control" name="desc" id="txtDesc" ></textarea>
                                             </div>
                                             <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-desc"></span>
+                                            <div class="form-group">
+                                                <label>Category</label>
+                                                <select id="category" class="form-select"  aria-label="Default select example">
+                                                    <option value="" selected disabled hidden>Choose here</option>
 
+                                                    <c:forEach  items="${catList}" var="cat" >
+                                                        <option value="${cat.getId()}"> ${cat.getName()} </option>
+
+                                                    </c:forEach>
+
+                                                    <!--                                                    <option value="1">One</option>
+                                                                                                        <option value="2">Two</option>
+                                                                                                        <option value="3">Three</option>-->
+                                                </select>
+
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -546,7 +564,7 @@
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product1.js"></script>
 
 
 

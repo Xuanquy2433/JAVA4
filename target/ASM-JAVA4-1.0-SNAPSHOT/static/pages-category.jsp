@@ -397,9 +397,9 @@
                                                 <!--<td>(171) 555-2222</td>-->
                                                 <td>
                                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditCategory(${cat.getId()}, {
-                                                                'name': '${cat.getName()}',
-                                                                'description': ` ${cat.getDescription()}`,
-                                                                'image': '${cat.getImage()}'
+                                                                'name': `${cat.getName()}`,
+                                                                'description': `${cat.getDescription()}`,
+                                                                'image': `${cat.getImage()}`
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                                     <a href="#deleteEmployeeModalll" class="delete" onclick="DeleteCategory(${cat.getId()})"  data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                     <!--<a onclick="onDlt(${cat.getId()})" > click </a>-->
