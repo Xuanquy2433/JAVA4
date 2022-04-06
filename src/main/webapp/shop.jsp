@@ -4,6 +4,7 @@
     Author     : XuanQuy
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
         <script src="https://kit.fontawesome.com/a36bda6cfe.js" crossorigin="anonymous"></script>
 
     </head>
-      <style>
+    <style>
         #style-1::-webkit-scrollbar {
             width: 6px;
             background-color: #F5F5F5;
@@ -50,7 +51,7 @@
             -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
             background-color: #F5F5F5;
         }
-        
+
 
     </style>
     <body id="style-1" class="goto-here">
@@ -147,232 +148,208 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-10 order-md-last">
                         <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
-                                        <span class="status">30%</span>
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template">
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span>$120.00</span></p>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template">
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span>$120.00</span></p>
+                            <c:forEach  items="${listProduct}" var="cat" >
+                                <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                    <div class="product">
+                                        <a  href="#" class="img-prod"><img style="height: 415px; width: 100%;padding: 2px" class="img-fluid" src="${cat.image}" alt="Colorlib Template">
+                                            <span class="status">30%</span>
+                                            <div class="overlay"></div>
+                                        </a>
+                                        <div class="text py-3 px-3">
+                                            <h3><a href="#">${cat.name}</a></h3>
+                                            <div class="d-flex">
+                                                <div class="pricing">
+                                                    <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">  ${ cat.price}</span></p>
+                                                </div>
+                                                <div class="rating">
+                                                    <p class="text-right">
+                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
+                                            <p class="bottom-area d-flex px-3">
+                                                <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                                <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                            </p>
                                         </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template">
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span>$120.00</span></p>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-5.jpg" alt="Colorlib Template">
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span>$120.00</span></p>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-6.jpg" alt="Colorlib Template">
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span>$120.00</span></p>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-7.jpg" alt="Colorlib Template">
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span>$120.00</span></p>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-8.jpg" alt="Colorlib Template">
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 px-3">
-                                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
-                                        <div class="d-flex">
-                                            <div class="pricing">
-                                                <p class="price"><span>$120.00</span></p>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
+                            <!--                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                                            <div class="product">
+                                                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template">
+                                                                    <div class="overlay"></div>
+                                                                </a>
+                                                                <div class="text py-3 px-3">
+                                                                    <h3><a href="#">Floral Jackquard Pullover</a></h3>
+                                                                    <div class="d-flex">
+                                                                        <div class="pricing">
+                                                                            <p class="price"><span>$120.00</span></p>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                            <p class="text-right">
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="bottom-area d-flex px-3">
+                                                                        <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                                                        <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+
+                            <!--                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                                            <div class="product">
+                                                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template">
+                                                                    <div class="overlay"></div>
+                                                                </a>
+                                                                <div class="text py-3 px-3">
+                                                                    <h3><a href="#">Floral Jackquard Pullover</a></h3>
+                                                                    <div class="d-flex">
+                                                                        <div class="pricing">
+                                                                            <p class="price"><span>$120.00</span></p>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                            <p class="text-right">
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="bottom-area d-flex px-3">
+                                                                        <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                                                        <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                                            <div class="product">
+                                                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template">
+                                                                    <div class="overlay"></div>
+                                                                </a>
+                                                                <div class="text py-3 px-3">
+                                                                    <h3><a href="#">Floral Jackquard Pullover</a></h3>
+                                                                    <div class="d-flex">
+                                                                        <div class="pricing">
+                                                                            <p class="price"><span>$120.00</span></p>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                            <p class="text-right">
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="bottom-area d-flex px-3">
+                                                                        <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                                                        <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                                            <div class="product">
+                                                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-5.jpg" alt="Colorlib Template">
+                                                                    <div class="overlay"></div>
+                                                                </a>
+                                                                <div class="text py-3 px-3">
+                                                                    <h3><a href="#">Floral Jackquard Pullover</a></h3>
+                                                                    <div class="d-flex">
+                                                                        <div class="pricing">
+                                                                            <p class="price"><span>$120.00</span></p>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                            <p class="text-right">
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="bottom-area d-flex px-3">
+                                                                        <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                                                        <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                                            <div class="product">
+                                                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-6.jpg" alt="Colorlib Template">
+                                                                    <div class="overlay"></div>
+                                                                </a>
+                                                                <div class="text py-3 px-3">
+                                                                    <h3><a href="#">Floral Jackquard Pullover</a></h3>
+                                                                    <div class="d-flex">
+                                                                        <div class="pricing">
+                                                                            <p class="price"><span>$120.00</span></p>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                            <p class="text-right">
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="bottom-area d-flex px-3">
+                                                                        <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                                                        <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+
+                            <!--                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                                            <div class="product">
+                                                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-8.jpg" alt="Colorlib Template">
+                                                                    <div class="overlay"></div>
+                                                                </a>
+                                                                <div class="text py-3 px-3">
+                                                                    <h3><a href="#">Floral Jackquard Pullover</a></h3>
+                                                                    <div class="d-flex">
+                                                                        <div class="pricing">
+                                                                            <p class="price"><span>$120.00</span></p>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                            <p class="text-right">
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="bottom-area d-flex px-3">
+                                                                        <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                                                        <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                         </div>
                         <div class="row mt-5">
                             <div class="col text-center">
@@ -399,7 +376,7 @@
                                 <li><a href="#">Dresses</a></li>
                                 <li><a href="#">Shorts &amp; Skirts</a></li>
                                 <li><a href="#">Jackets</a></li>
-                                <li><a href="#">Coats</a></li>
+                                <li><a href="${pageContext.request.contextPath}/static/trash/shop.jsp">Coats</a></li>
                                 <li><a href="#">Sleeveless</a></li>
                                 <li><a href="#">Trousers</a></li>
                                 <li><a href="#">Winter Coats</a></li>

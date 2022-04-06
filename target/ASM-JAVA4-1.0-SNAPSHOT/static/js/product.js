@@ -27,6 +27,7 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
     if (txtId) {
 //case update
         console.log("case update")
+        console.log("id" + categoryId);
         if (!/^[0-9]+$/.test(txtPrice)) {
             errorPrice.innerHTML = "Please only enter numeric characters only for your price! (Allowed input:0-9)";
         }
@@ -36,6 +37,7 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
             image: txtImage,
             price: txtPrice,
             description: txtDescription,
+            categoryId: Number(categoryId)
         }
         console.log('jsonObj', jsonObj)
         fetch('/ASM-JAVA4/AdminProductController', {
@@ -66,7 +68,7 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                         icon: 'success'
                     })
 
-                    console.log("abcccc")
+                    console.log("abcccc123")
                     console.log('udate thanh cong')
                     resetForm();
                     console.log('theRowId', txtId)
@@ -85,7 +87,7 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                                                 <td>${item.image}</td>
                                                 <td>${item.price}</td>
                                                 <td>${item.description}</td>
-                                                <td>${item.categpryId}</td>
+                                                 <td>${item.categoryId}</td>
                                                
                                                 <td>
                                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditProduct(${item.id}, {
@@ -175,7 +177,7 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                                                 <td>${item.image}</td>
                                                 <td>${item.price}</td>
                                                 <td>${item.description}</td>
-                                                <td>${item.categpryId}</td>
+                                                <td>${item.categoryId}</td>
 
                                                 <!--<td>(171) 555-2222</td>-->
                                                 <td>
@@ -226,14 +228,17 @@ function EditProduct(id, item) {
         keyboard: false
     })
     catModal.show()
-    console.log("click edit button");
-    console.log("id", id);
+    console.log("click edit button123123");
+
+    console.log("id ", categoryId);
     console.log(item);
     document.querySelector('#txtName').value = item.name || ""
     document.querySelector('#txtImage').value = item.image || ""
     document.querySelector('#txtPrice').value = item.price || ""
     document.querySelector('#txtDesc').value = item.description || ""
     document.querySelector('#txtId').value = id || 0
+//    document.querySelector('#category').value = "category" || 0
+    document.getElementById('category').value = ''
     catModal.show()
 }
 

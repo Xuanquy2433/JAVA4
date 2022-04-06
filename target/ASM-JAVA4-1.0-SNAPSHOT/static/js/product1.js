@@ -229,7 +229,8 @@ function EditProduct(id, item) {
     })
     catModal.show()
     console.log("click edit button123123");
-    console.log("id ", category);
+
+    console.log("id ", categoryId);
     console.log(item);
     document.querySelector('#txtName').value = item.name || ""
     document.querySelector('#txtImage').value = item.image || ""
@@ -237,7 +238,7 @@ function EditProduct(id, item) {
     document.querySelector('#txtDesc').value = item.description || ""
     document.querySelector('#txtId').value = id || 0
 //    document.querySelector('#category').value = "category" || 0
-    document.getElementById('category').value = ''
+    document.getElementById('category').value = 168
     catModal.show()
 }
 

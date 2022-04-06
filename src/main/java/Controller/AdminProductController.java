@@ -39,6 +39,8 @@ public class AdminProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+request.setCharacterEncoding("utf-8");
         String method = request.getMethod();
         System.out.println("method" + method);
         if (method.equals("GET")) {
@@ -84,7 +86,7 @@ public class AdminProductController extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             if (!name.equals("") && !des.equals("")) {
-                ProductDTO dto = new ProductDTO(name, image, price, des, categoryId);
+                ProductDTO dto = new ProductDTO(name, image, price, des, categoryId );
                 ProductDao dao = new ProductDao();
                 boolean isCreate = dao.update(cat);
                 System.err.println("isCreate" + isCreate);
