@@ -465,10 +465,10 @@
                                             <div class="form-group">
                                                 <label>Category</label>
                                                 <select id="category" class="form-select"  aria-label="Default select example">
-                                                    <option value="" selected disabled hidden>Choose here</option>
+                                                    <option selected disabled hidden>Choose category</option>
 
                                                     <c:forEach  items="${catList}" var="cat" >
-                                                        <option value="${cat.getId()}"> ${cat.getName()} </option>
+                                                        <option  value="${cat.getId()}"> ${cat.getName()} </option>
 
                                                     </c:forEach>
 
@@ -563,7 +563,7 @@
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product1.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product.js"></script>
 
 
 

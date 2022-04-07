@@ -63,16 +63,45 @@ public class ShopController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ProductDao dao = new ProductDao();
+        ProductDao productDao = new ProductDao();
         CategoryDao catDao = new CategoryDao();
 
-        List<ProductDTO> list = new ArrayList<ProductDTO>();
+        List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
+        listCat = catDao.getList();
+        request.setAttribute("listCat", listCat);
 
-        list = dao.getList();
-        request.setAttribute("listProduct", list);
-        System.out.println(list.size());
-        System.out.println("danh sachh: " + list);
-        request.getRequestDispatcher("shop.jsp").forward(request, response);
+        String id = request.getParameter("id");
+        String idCate = request.getParameter("idCate");
+
+        if (id != null) {
+            //detail page
+            System.out.println("okokok");
+            ProductDTO detail = productDao.getDetailByid(Integer.parseInt(id));
+            CategoryDTO catDetail = catDao.getDetailByid(detail.getCategoryId());
+
+            request.setAttribute("detail", detail);
+            request.setAttribute("catDetail", catDetail);
+            System.out.println("123213123" + detail);
+
+            request.getRequestDispatcher("ShopDetail.jsp").forward(request, response);
+
+        } else if (idCate != null) {
+            //category page
+            System.out.println("category page");
+            List<ProductDTO> listCate = productDao.getListCategory(Integer.parseInt(idCate));
+
+            System.out.println("categpry page list" + listCate);
+            request.setAttribute("listCategory", listCate);
+            request.getRequestDispatcher("ShopCategory.jsp").forward(request, response);
+
+        } else {
+            List<ProductDTO> list = new ArrayList<ProductDTO>();
+            list = productDao.getList();
+
+            request.setAttribute("listProduct", list);
+
+            request.getRequestDispatcher("shop.jsp").forward(request, response);
+        }
     }
 
     /**

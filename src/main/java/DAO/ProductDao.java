@@ -33,7 +33,7 @@ public class ProductDao {
             pst.setString(2, cat.getImage());
             pst.setInt(3, cat.getPrice());
             pst.setString(4, cat.getDescription());
-            pst.setInt( 5, cat.getCategoryId());
+            pst.setInt(5, cat.getCategoryId());
             if (pst.executeUpdate() > 0) {
                 // Retrieves any auto-generated keys created as a result of executing this Statement object
                 ResultSet generatedKeys = pst.getGeneratedKeys();
@@ -82,6 +82,26 @@ public class ProductDao {
         try {
             String sql = "SELECT * FROM product";
             PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5), rst.getInt(6));
+                ListCat.add(product);
+            }
+            return ListCat;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<ProductDTO> getListCategory(int id) {
+        List<ProductDTO> ListCat = new ArrayList<ProductDTO>();
+        try {
+            String sql = "SELECT * FROM product where categoryId  = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, id);
+
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5), rst.getInt(6));

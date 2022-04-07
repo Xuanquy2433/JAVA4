@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -69,7 +70,7 @@
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                                <span class="text">youremail@email.com</span>
+                                <span class="text">xuanquy@email.com</span>
                             </div>
                             <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                                 <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -152,7 +153,7 @@
                             <c:forEach  items="${listProduct}" var="cat" >
                                 <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
                                     <div class="product">
-                                        <a  href="#" class="img-prod"><img style="height: 415px; width: 100%;padding: 2px" class="img-fluid" src="${cat.image}" alt="Colorlib Template">
+                                        <a  href="${pageContext.request.contextPath}/ShopController?id=${cat.getId()}" class="img-prod"><img style="height: 415px; width: 100%;padding: 2px" class="img-fluid" src="${cat.image}" alt="Colorlib Template">
                                             <span class="status">30%</span>
                                             <div class="overlay"></div>
                                         </a>
@@ -160,7 +161,10 @@
                                             <h3><a href="#">${cat.name}</a></h3>
                                             <div class="d-flex">
                                                 <div class="pricing">
-                                                    <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">  ${ cat.price}</span></p>
+
+                                                    <%--<c:out value="${String.valueOf(cat.getPrice()).getClass().getName }" />--%>
+                                                    <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale"> <fmt:formatNumber value = "${cat.getPrice()}" 
+                                                                          type = "currency"/> </p></span></p>
                                                 </div>
                                                 <div class="rating">
                                                     <p class="text-right">
@@ -370,17 +374,20 @@
 
                     <div class="col-md-4 col-lg-2 sidebar">
                         <div class="sidebar-box-2">
-                            <h2 class="heading mb-4"><a href="#">Clothing</a></h2>
+                            <h2 class="heading mb-4"><a href="#">Category</a></h2>
                             <ul>
-                                <li><a href="#">Shirts &amp; Tops</a></li>
-                                <li><a href="#">Dresses</a></li>
-                                <li><a href="#">Shorts &amp; Skirts</a></li>
-                                <li><a href="#">Jackets</a></li>
-                                <li><a href="${pageContext.request.contextPath}/static/trash/shop.jsp">Coats</a></li>
-                                <li><a href="#">Sleeveless</a></li>
-                                <li><a href="#">Trousers</a></li>
-                                <li><a href="#">Winter Coats</a></li>
-                                <li><a href="#">Jumpsuits</a></li>
+                                <c:forEach  items="${listCat}" var="cat" >
+
+                                    <li><a href="${pageContext.request.contextPath}/ShopController?idCate=${cat.getId()}"> ${cat.getName()}</a></li>
+                                    <!--                                    <li><a href="#">Dresses</a></li>
+                                                                        <li><a href="#">Shorts &amp; Skirts</a></li>
+                                                                        <li><a href="#">Jackets</a></li>
+                                                                        <li><a href="${pageContext.request.contextPath}/static/trash/shop.jsp">Coats</a></li>
+                                                                        <li><a href="#">Sleeveless</a></li>
+                                                                        <li><a href="#">Trousers</a></li>
+                                                                        <li><a href="#">Winter Coats</a></li>
+                                                                        <li><a href="#">Jumpsuits</a></li>-->
+                                </c:forEach>
                             </ul>
                         </div>
                         <div class="sidebar-box-2">
@@ -390,7 +397,7 @@
                                 <li><a href="#">Dresses</a></li>
                                 <li><a href="#">Shorts &amp; Skirts</a></li>
                                 <li><a href="#">Jackets</a></li>
-                                <li><a href="#">Coats</a></li>
+                                <li><a href="${pageContext.request.contextPath}/static/trash/shop.jsp">Coats</a></li>
                                 <li><a href="#">Jeans</a></li>
                                 <li><a href="#">Sleeveless</a></li>
                                 <li><a href="#">Trousers</a></li>
