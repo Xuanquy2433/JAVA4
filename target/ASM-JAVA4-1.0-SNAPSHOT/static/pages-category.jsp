@@ -61,12 +61,23 @@
     <body>
         <%
             String name = (String) session.getAttribute("name");
+            boolean isAuth = Boolean.valueOf(String.valueOf(session.getAttribute("isAuthed")));
+
+            if (!isAuth) {
+
+                session.setAttribute("message", "You not have access!");
+
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
+                //          <jsp:forward page="login.jsp"/>
+            } else {
+                session.setAttribute("message", "");
+            }
         %>
         <div class="wrapper">
             <nav id="sidebar" class="sidebar js-sidebar">
                 <div class="sidebar-content js-simplebar">
                     <a class="sidebar-brand" href="static/dashboard.jsp">
-                        <span class="align-middle">AdminKit</span>
+                        <span class="align-middle">Dawm</span>
                     </a>
 
                     <ul  class="sidebar-nav">
@@ -330,7 +341,7 @@
                                     <img src="${pageContext.request.contextPath}/static/img/avatars/avt.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span  class="text-dark"><%=name%></span>
                                 </a>
                                 <div style="width: 200px" class="dropdown-menu dropdown-menu-end">
-                                    <a style="font-size: 14px" class="dropdown-item" href="pages-profile.jsp"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                                    <a style="font-size: 14px" class="dropdown-item" href="${pageContext.request.contextPath}/static/pages-profile.jsp"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                                     <a style="font-size: 14px" class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                     <div class="dropdown-divider"></div>
                                     <a style="font-size: 14px" class="dropdown-item" href="dashboard.jsp"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>

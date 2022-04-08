@@ -66,7 +66,7 @@
                         <div class="row d-flex">
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                                <span class="text">+ 1235 2355 98</span>
+                                <span class="text">+ 0345 678 891</span>
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
@@ -95,7 +95,7 @@
                             <a style="font-size: 13px;" class="nav-link dropdown-toggle" href="#" id="dropdown04"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="shop.jsp">Shop</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopController"> Shop</a>
                                 <a class="dropdown-item" href="product-single.jsp">Single Product</a>
                                 <a class="dropdown-item" href="cart.jsp">Cart</a>
                                 <a class="dropdown-item" href="checkout.jsp">Checkout</a>
@@ -163,8 +163,9 @@
                                                 <div class="pricing">
 
                                                     <%--<c:out value="${String.valueOf(cat.getPrice()).getClass().getName }" />--%>
-                                                    <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale"> <fmt:formatNumber value = "${cat.getPrice()}" 
-                                                                          type = "currency"/> </p></span></p>
+                                                    <p class="price"><span class="mr-2 price-dc">30%</span>
+                                                    <p style="color: #c2a500" class="price-sale"> <fmt:formatNumber value = "${cat.getPrice()}" 
+                                                                          type = "currency"/> </p>
                                                 </div>
                                                 <div class="rating">
                                                     <p class="text-right">
@@ -374,7 +375,7 @@
 
                     <div class="col-md-4 col-lg-2 sidebar">
                         <div class="sidebar-box-2">
-                            <h2 class="heading mb-4"><a href="#">Category</a></h2>
+                            <h2 class="heading mb-4"><a href="${pageContext.request.contextPath}/ShopController">CATEGORIES</a></h2>
                             <ul>
                                 <c:forEach  items="${listCat}" var="cat" >
 

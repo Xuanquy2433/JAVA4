@@ -36,9 +36,23 @@
         <link rel="shortcut icon" href="images/dawn.png" />
 
         <script src="https://kit.fontawesome.com/a36bda6cfe.js" crossorigin="anonymous"></script>
+  <style>
+        #style-1::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        #style-1::-webkit-scrollbar-thumb {
+            background-color: #000000;
+        }
+        #style-1::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
 
+
+    </style>
     </head>
-    <body class="goto-here">
+    <body id="style-1" class="goto-here">
         <div class="py-1 bg-black">
             <div class="container">
                 <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
@@ -46,11 +60,11 @@
                         <div class="row d-flex">
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                                <span class="text">+ 1235 2355 98</span>
+                                <span class="text">+ 0345 678 891</span>
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                                <span class="text">youremail@email.com</span>
+                                  <span class="text">xuanquy@email.com</span>
                             </div>
                             <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                                 <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -75,7 +89,7 @@
                             <a style="font-size: 13px;" class="nav-link dropdown-toggle" href="#" id="dropdown04"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="shop.jsp">Shop</a>
+                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopController"> Shop</a>
                                 <a class="dropdown-item" href="product-single.jsp">Single Product</a>
                                 <a class="dropdown-item" href="cart.jsp">Cart</a>
                                 <a class="dropdown-item" href="checkout.jsp">Checkout</a>

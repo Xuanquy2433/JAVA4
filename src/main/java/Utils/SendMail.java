@@ -16,7 +16,7 @@ import java.util.Properties;
 public class SendMail {
 
     private static final String senderEmail = "xuanquy2433@gmail.com";//change with your sender email
-    private static final String senderPassword = "lxQuy63544@";//change with your sender password
+    private static final String senderPassword = "Acclone@734";//change with your sender password
 
     public void sendAsHtml(String to, String title, String html) throws MessagingException {
         System.out.println("Sending email to " + to);

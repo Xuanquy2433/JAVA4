@@ -71,12 +71,12 @@
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                         class="icon-phone2"></span></div>
-                                <span class="text">+ 1235 2355 98</span>
+                                <span class="text">+ 0345 678 891</span>
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                         class="icon-paper-plane"></span></div>
-                                <span class="text">xuanquys@email.com</span>
+                                <span class="text">xuanquy@email.com</span>
                             </div>
                             <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                                 <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -160,7 +160,7 @@
                                         <p>A small river named Duden flows by their place and supplies it with the necessary
                                             regelialia. It is a paradisematic country.</p>
 
-                                        <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Discover Now</a></p>
+                                        <p><a href="${pageContext.request.contextPath}/ShopController" class="btn btn-primary px-5 py-3 mt-3">Discover Now</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                                         <p>A small river named Duden flows by their place and supplies it with the necessary
                                             regelialia. It is a paradisematic country.</p>
 
-                                        <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Shop Now</a></p>
+                                        <p><a href="${pageContext.request.contextPath}/ShopController" class="btn btn-primary px-5 py-3 mt-3">Shop Now</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -414,7 +414,7 @@
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
                                 Semantics, a large language ocean.</p>
-                            <p><a href="#" class="btn btn-white px-4 py-3">Shop now</a></p>
+                            <p><a href="${pageContext.request.contextPath}/ShopController" class="btn btn-white px-4 py-3">Shop now</a></p>
                         </div>
                     </div>
                 </div>
@@ -429,7 +429,7 @@
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
                                 Semantics, a large language ocean.</p>
-                            <p><a href="#" class="btn btn-white px-4 py-3">Shop now</a></p>
+                            <p><a href="${pageContext.request.contextPath}/ShopController" class="btn btn-white px-4 py-3">Shop now</a></p>
                         </div>
                     </div>
                 </div>

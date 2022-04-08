@@ -47,7 +47,7 @@
             <nav id="sidebar" class="sidebar js-sidebar">
                 <div class="sidebar-content js-simplebar">
                     <a class="sidebar-brand" href="dashboard.jsp">
-                        <span class="align-middle">AdminKit</span>
+                        <span class="align-middle">Dawm</span>
                     </a>
 
                     <ul class="sidebar-nav">
@@ -69,21 +69,21 @@
 
                         <li class="sidebar-item">
                             <a style="text-decoration: none;
-                                font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminUserController">
+                               font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminUserController">
                                 <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
                             <a style="text-decoration: none;
-                                font-size: 14px"  class="sidebar-link"  href="${pageContext.request.contextPath}/AdminProductController">
+                               font-size: 14px"  class="sidebar-link"  href="${pageContext.request.contextPath}/AdminProductController">
                                 <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Products</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
                             <a style="text-decoration: none;
-                                font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminCategoryController">
+                               font-size: 14px"  class="sidebar-link" href="${pageContext.request.contextPath}/AdminCategoryController">
                                 <i class="align-middle" data-feather="book"></i> <span class="align-middle">Category</span>
                             </a>
                         </li>
@@ -307,7 +307,7 @@
                                     <a class="dropdown-item" href="dashboard.jsp"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
                                     <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
                                     <div class="dropdown-divider"></div>
-                                     <form class="preview-item-content" method="get" action="${pageContext.request.contextPath}/LogoutController" >
+                                    <form class="preview-item-content" method="get" action="${pageContext.request.contextPath}/LogoutController" >
                                         <button class="dropdown-item">Logout</button>
                                     </form>
                                 </div>
