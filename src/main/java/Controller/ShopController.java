@@ -36,6 +36,8 @@ public class ShopController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -62,6 +64,8 @@ public class ShopController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
         ProductDao productDao = new ProductDao();
         CategoryDao catDao = new CategoryDao();
@@ -72,6 +76,7 @@ public class ShopController extends HttpServlet {
 
         String id = request.getParameter("id");
         String idCate = request.getParameter("idCate");
+        String idSreach = request.getParameter("idSearch");
 
         if (id != null) {
             //detail page
@@ -115,7 +120,32 @@ public class ShopController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        System.out.println("vao roiii yeahhhhhh");
+        ProductDao productDao = new ProductDao();
+        //category page
+        System.out.println("serach here");
+        String name = request.getParameter("searchBox");
+
+        List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
+        CategoryDao catDao = new CategoryDao();
+        listCat = catDao.getList();
+        request.setAttribute("listCat", listCat);
+
+        System.out.println("value " + name);
+        List<ProductDTO> listSearch = productDao.search(name);
+
+        System.out.println("size: " + listSearch.size());
+
+        System.out.println("categpry page list" + listSearch);
+        request.setAttribute("listSearch", listSearch);
+        request.setAttribute("nameSearch", name);
+        request.setAttribute("size", listSearch.size());
+
+        request.setAttribute("messageSearch", listSearch.size() + " results for " + name + ".");
+
+        request.getRequestDispatcher("ShopSearch.jsp").forward(request, response);
     }
 
     /**

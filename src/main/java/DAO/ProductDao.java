@@ -115,6 +115,26 @@ public class ProductDao {
         return null;
     }
 
+    public List<ProductDTO> search(String name) {
+        List<ProductDTO> ListCat = new ArrayList<ProductDTO>();
+        try {
+            String sql = "SELECT * FROM product where name  = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, name);
+
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5), rst.getInt(6));
+                ListCat.add(product);
+            }
+            return ListCat;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public boolean update(ProductDTO cat) {
         try {
             String sql = "update  product set name = ? ,image=?, price = ? ,description =? , categoryId = ? where  id = ?";

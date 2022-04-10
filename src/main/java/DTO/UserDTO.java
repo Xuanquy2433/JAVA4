@@ -9,13 +9,22 @@ package DTO;
  * @author XuanQuy
  */
 public class UserDTO {
-    
+
     public UserDTO() {
     }
 
-    public UserDTO(int id, String username, String password, String email, String role, String name) {
+    public UserDTO(int id, String userName, String password, String email, String role, String name) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.name = name;
+    }
+
+    public UserDTO(String userName, String password, String email, String role, String name) {
+
+        this.userName = userName;
         this.password = password;
         this.email = email;
         this.role = role;
@@ -39,15 +48,11 @@ public class UserDTO {
     }
 
     int id;
-    String username;
+    String userName;
     String password;
     String email;
     String role;
     String name;
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -61,8 +66,12 @@ public class UserDTO {
         this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -76,5 +85,7 @@ public class UserDTO {
     public String getRole() {
         return role;
     }
+
+ 
 
 }

@@ -4,6 +4,9 @@
     Author     : XuanQuy
 --%>
 
+<%@page import="DTO.Item"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DTO.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -36,21 +39,21 @@
         <link rel="shortcut icon" href="images/dawn.png" />
 
         <script src="https://kit.fontawesome.com/a36bda6cfe.js" crossorigin="anonymous"></script>
-  <style>
-        #style-1::-webkit-scrollbar {
-            width: 6px;
-            background-color: #F5F5F5;
-        }
-        #style-1::-webkit-scrollbar-thumb {
-            background-color: #000000;
-        }
-        #style-1::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-            background-color: #F5F5F5;
-        }
+        <style>
+            #style-1::-webkit-scrollbar {
+                width: 6px;
+                background-color: #F5F5F5;
+            }
+            #style-1::-webkit-scrollbar-thumb {
+                background-color: #000000;
+            }
+            #style-1::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                background-color: #F5F5F5;
+            }
 
 
-    </style>
+        </style>
     </head>
     <body id="style-1" class="goto-here">
         <div class="py-1 bg-black">
@@ -64,7 +67,7 @@
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                                  <span class="text">xuanquy@email.com</span>
+                                <span class="text">xuanquy@email.com</span>
                             </div>
                             <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                                 <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -89,7 +92,7 @@
                             <a style="font-size: 13px;" class="nav-link dropdown-toggle" href="#" id="dropdown04"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopController"> Shop</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopController"> Shop</a>
                                 <a class="dropdown-item" href="product-single.jsp">Single Product</a>
                                 <a class="dropdown-item" href="cart.jsp">Cart</a>
                                 <a class="dropdown-item" href="checkout.jsp">Checkout</a>
@@ -152,28 +155,36 @@
                                         <th>Quantity</th>
                                         <th>Total</th>
                                     </tr>
+
+                                    <%
+                                        Cart cart = (Cart) session.getAttribute("cart");
+                                        if (cart != null) {
+                                            ArrayList<Item> ds = cart.getCart();
+                                            for (Item mh : ds) {
+//                                                Car sp = CarDao.findProductById(mh.getMaSp());
+                                    %>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center">
-                                        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-
-                                        <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
-
-                                        <td class="product-name">
-                                            <h3>Young Woman Wearing Dress</h3>
-                                            <p>Far far away, behind the word mountains, far from the countries</p>
-                                        </td>
-
-                                        <td class="price">$4.90</td>
-
-                                        <td class="quantity">
-                                            <div class="input-group mb-3">
-                                                <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                            </div>
-                                        </td>
-
-                                        <td class="total">$4.90</td>
-                                    </tr><!-- END TR-->
+                                    <!--                                    <tr class="text-center">
+                                                                            <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                    
+                                                                            <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
+                                    
+                                                                            <td class="product-name">
+                                                                                <h3>Young Woman Wearing Dress</h3>
+                                                                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                                                            </td>
+                                    
+                                                                            <td class="price">$4.90</td>
+                                    
+                                                                            <td class="quantity">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+                                                                                </div>
+                                                                            </td>
+                                    
+                                                                            <td class="total">$4.90</td>
+                                                                        </tr> END TR-->
 
                                     <tr class="text-center">
                                         <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>

@@ -373,7 +373,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped table-hover" id="catTable">
                                     <thead>
                                         <tr>
                                             <th>
@@ -382,7 +382,6 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th>ID</th>
                                             <th>UserName</th>
                                             <th>Password</th>
                                             <th>Email</th>
@@ -403,16 +402,22 @@
                                                         <label for="checkbox1"></label>
                                                     </span>
                                                 </td>
-                                                <td>${cat.getId()}</td>
-                                                <td>${cat.getUsername()}</td>
+                                                <td>${cat.getUserName()}</td>
                                                 <td>${cat.getPassword()}</td>
                                                 <td>${cat.getEmail()}</td>
                                                 <td>${cat.getRole()}</td>
                                                 <td>${cat.getName()}</td>
 
                                                 <td>
-                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditProduct(${cat.getId()}, {
+                                                                'userName': '${cat.getUserName()}',
+                                                                'password': '${cat.getPassword()}',
+                                                                'email': '${cat.getEmail()}',
+                                                                'role': `${cat.getRole()}`,
+                                                                'name': ` ${cat.getName()}`,
+
+                                                            })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                    <a href="#deleteEmployeeModal567" class="delete" onclick="DeleteProduct(${cat.getId()})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -437,13 +442,14 @@
                         <div id="addEmployeeModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="post" action="" id="categoryForm">
+                                    <form method="post" action="${pageContext.request.contextPath}/AdminUserController"   id="userForm">
                                         <div class="modal-header">						
-                                            <h4 class="modal-title">Add User</h4>
+                                            <h4 class="modal-title">View User</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">					
                                             <div class="form-group">
+                                                <input type="hidden" class="form-control" id="txtId" name="id" >
                                                 <label>Username</label>
                                                 <input type="text" id="txtUsername" name="username"  class="form-control" >
                                             </div>
@@ -462,7 +468,10 @@
 
                                             <div class="form-group">
                                                 <label>Role</label>
-                                                <input type="text" id="txtRole"  name="role" class="form-control" >
+                                                <select class="form-select" id="txtRole" aria-label="Default select example">
+                                                    <option value="admin">admin</option>
+                                                    <option selected value="user">user</option>
+                                                </select>
                                             </div>
                                             <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-role"></span>
 
@@ -476,7 +485,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <button type="submit" class="btn btn-success"   > Add  </button>
+                                            <button type="submit" class="btn btn-success"   > Save  </button>
                                         </div>
                                     </form>
 
@@ -484,54 +493,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Edit Modal HTML -->
-                        <div id="editEmployeeModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form>
-                                        <div class="modal-header">						
-                                            <h4 class="modal-title">Edit User</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">					
-                                            <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" id="txtUsername" name="username"  class="form-control" >
-                                            </div>
-                                            <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-username"></span>
-                                            <div class="form-group">
-                                                <label>Password</label>
-                                                <input type="password" id="txtPassword"  name="password" class="form-control" >
-                                            </div>
-                                            <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-password"></span>
 
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" id="txtEmail"  name="email" class="form-control" >
-                                            </div>
-                                            <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-email"></span>
-
-                                            <div class="form-group">
-                                                <label>Role</label>
-                                                <input type="text" id="txtRole"  name="role" class="form-control" >
-                                            </div>
-                                            <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-role"></span>
-
-                                            <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" id="txtName"  name="name" class="form-control" >
-                                            </div>
-                                            <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-name"></span>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                            <input type="submit" class="btn btn-info" value="Save">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Delete Modal HTML -->
                         <div id="deleteEmployeeModal" class="modal fade">
                             <div class="modal-dialog">
@@ -589,37 +551,24 @@
 
         </div>
 
-        <script>
 
-            let formCategory = document.getElementById("categoryForm")
-
-            formCategory.addEventListener('submit', (event) => {
-                console.log('abc');
-                event.preventDefault()
-
-                const txtName = document.querySelector('#txtName').value;
-                const txtImage = document.querySelector('#txtImage').value;
-                const txtDesc = document.querySelector('#txtDesc').value;
-                const errorName = document.querySelector('#error-name');
-                const errorImage = document.querySelector('#error-image');
-                const errorDesc = document.querySelector('#error-desc');
-                if (txtName === '') {
-                    errorName.innerHTML = "Name required field";
-                } else if (txtImage === '') {
-                    errorImage.innerHTML = "Image required field";
-                } else if (txtDesc === '') {
-                    errorDesc.innerHTML = "Description required field";
-                } else {
-                    event.currentTarget.submit();
-                }
-            })
-
-
-
-        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css" integrity="sha512-8D+M+7Y6jVsEa7RD6Kv/Z7EImSpNpQllgaEIQAtqHcI0H6F4iZknRj0Nx1DCdB+TwBaS+702BGWYC0Ze2hpExQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
-        <script src="${pageContext.request.contextPath}/js/category.js"></script>
+        <!--<script src="./js/category.js"></script>-->
+
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/js/helpers.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/config.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/vendor/css/toast.css"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
+
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/user1.js"></script>
 
 
 

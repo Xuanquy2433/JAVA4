@@ -145,6 +145,16 @@
         </div>
 
         <section class="ftco-section bg-light">
+            <form  method="post" style="width: 40%; margin-left: 390px;" class="input-group mb-3 col">
+                <input style="padding: 4px; border-radius: 8px 0px 0px 8px; border: 1px solid cyan; outline: none" type="text" name="searchBox" placeholder="Search name here" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button style="border-radius: 0px 8px 8px 0px; border: 1px solid cyan; outline: none" class="btn btn-outline-secondary" onclick="(e) => {
+                                e.preventDefault();
+                            }" type="submit"> <i class="fa-solid fa-magnifying-glass"></i>  </button>
+
+                    <!--<a class="btn btn-outline-secondary"  href="${pageContext.request.contextPath}/ShopController?idSearch=5"> <i class="fa-solid fa-magnifying-glass"></i></a>-->
+                </div>
+            </form>
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-lg-10 order-md-last">
@@ -165,7 +175,7 @@
                                                     <%--<c:out value="${String.valueOf(cat.getPrice()).getClass().getName }" />--%>
                                                     <p class="price"><span class="mr-2 price-dc">30%</span>
                                                     <p style="color: #c2a500" class="price-sale"> <fmt:formatNumber value = "${cat.getPrice()}" 
-                                                                          type = "currency"/> </p>
+                                                                      type = "currency"/> </p>
                                                 </div>
                                                 <div class="rating">
                                                     <p class="text-right">

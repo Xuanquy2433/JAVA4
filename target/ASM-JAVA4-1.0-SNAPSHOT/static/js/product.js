@@ -67,9 +67,12 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                         showHideTransition: 'slide',
                         icon: 'success'
                     })
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000)
 
                     console.log("abcccc123")
-                    console.log('udate thanh cong')
+                    console.log('udate thanh cong ')
                     resetForm();
                     console.log('theRowId', txtId)
                     var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
