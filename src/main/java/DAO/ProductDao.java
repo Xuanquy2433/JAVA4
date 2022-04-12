@@ -95,6 +95,63 @@ public class ProductDao {
         return null;
     }
 
+    public List<ProductDTO> getListSortAsc() {
+        DecimalFormat twoPlaces = new DecimalFormat("0.00");
+        List<ProductDTO> ListCat = new ArrayList<ProductDTO>();
+        try {
+            String sql = "SELECT * FROM product order by price asc";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5), rst.getInt(6));
+                ListCat.add(product);
+            }
+            return ListCat;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<ProductDTO> getListSortDesc() {
+        DecimalFormat twoPlaces = new DecimalFormat("0.00");
+        List<ProductDTO> ListCat = new ArrayList<ProductDTO>();
+        try {
+            String sql = "SELECT * FROM product order by price desc";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5), rst.getInt(6));
+                ListCat.add(product);
+            }
+            return ListCat;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<ProductDTO> getListSortName() {
+        DecimalFormat twoPlaces = new DecimalFormat("0.00");
+        List<ProductDTO> ListCat = new ArrayList<ProductDTO>();
+        try {
+            String sql = "SELECT * FROM product order by name ";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                ProductDTO product = new ProductDTO(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getString(5), rst.getInt(6));
+                ListCat.add(product);
+            }
+            return ListCat;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public List<ProductDTO> getListCategory(int id) {
         List<ProductDTO> ListCat = new ArrayList<ProductDTO>();
         try {
@@ -118,7 +175,7 @@ public class ProductDao {
     public List<ProductDTO> search(String name) {
         List<ProductDTO> ListCat = new ArrayList<ProductDTO>();
         try {
-            String sql = "SELECT * FROM product where name  = ?";
+            String sql = "SELECT * FROM product where name  like ?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, name);
 

@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="css/magnific-popup.css">
 
         <link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="css/shopSort.css">
 
         <link rel="stylesheet" href="css/ionicons.min.css">
 
@@ -154,9 +155,9 @@
 
                     <!--<a class="btn btn-outline-secondary"  href="${pageContext.request.contextPath}/ShopController?idSearch=5"> <i class="fa-solid fa-magnifying-glass"></i></a>-->
                 </div>
-                    <span style="margin-left: 30px; margin-top: 13px" >${messageSearch}</span>
+                <span style="margin-left: 30px; margin-top: 13px" >${messageSearch}</span>
             </form>
-                
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-lg-10 order-md-last">
@@ -403,6 +404,15 @@
                                 </c:forEach>
                             </ul>
                         </div>
+                        <form method="post" class="sidebar-box-2">
+                            <h2 class="heading mb-4"><a href="#">Sort</a></h2>
+                            <ul>
+                                <li><button name="button_sort_clicked" value="ButtonSort" class="sort" >Sort by price <i class="fa-solid fa-arrow-up"></i></button></li>
+                                <li><button name="button_sortDesc_clicked" value="ButtonSort" class="sort" >Sort by price <i class="fa-solid fa-arrow-down"></i></button></li>
+                                <li><button name="button_sortName_clicked" value="ButtonSort" class="sort" >Sort by name A-Z</button></li>
+
+                            </ul>
+                        </form>
                         <div class="sidebar-box-2">
                             <h2 class="heading mb-4"><a href="#">Jeans</a></h2>
                             <ul>

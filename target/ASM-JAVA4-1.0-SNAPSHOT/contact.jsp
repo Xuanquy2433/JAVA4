@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                                  <span class="text">xuanquy@email.com</span>
+                                <span class="text">xuanquy@email.com</span>
                             </div>
                             <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                                 <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -75,7 +75,7 @@
                             <a style="font-size: 13px;" class="nav-link dropdown-toggle" href="#" id="dropdown04"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopController"> Shop</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopController"> Shop</a>
                                 <a class="dropdown-item" href="product-single.jsp">Single Product</a>
                                 <a class="dropdown-item" href="cart.jsp">Cart</a>
                                 <a class="dropdown-item" href="checkout.jsp">Checkout</a>
@@ -150,18 +150,18 @@
                 </div>
                 <div class="row block-9">
                     <div class="col-md-6 order-md-last d-flex">
-                        <form action="#" class="bg-white p-5 contact-form">
+                        <form  class="bg-white p-5 contact-form">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Name">
+                                <input type="text" class="form-control" name="name" placeholder="Your Name">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Email">
+                                <input type="text" class="form-control" name="email" placeholder="Your Email">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject">
+                                <input type="text" class="form-control" name="subject" placeholder="Subject">
                             </div>
                             <div class="form-group">
-                                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                                <textarea name="" id="" cols="30" rows="7" name="message" class="form-control" placeholder="Message"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">

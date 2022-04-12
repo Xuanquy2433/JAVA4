@@ -123,29 +123,107 @@ public class ShopController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         System.out.println("vao roiii yeahhhhhh");
-        ProductDao productDao = new ProductDao();
-        //category page
-        System.out.println("serach here");
-        String name = request.getParameter("searchBox");
 
-        List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
-        CategoryDao catDao = new CategoryDao();
-        listCat = catDao.getList();
-        request.setAttribute("listCat", listCat);
+        if (null != request.getParameter("button_search_clicked")) {
+            ProductDao productDao = new ProductDao();
+            //category page
+            System.out.println("serach here");
+            String name = request.getParameter("searchBox");
 
-        System.out.println("value " + name);
-        List<ProductDTO> listSearch = productDao.search(name);
+            List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
+            CategoryDao catDao = new CategoryDao();
+            listCat = catDao.getList();
+            request.setAttribute("listCat", listCat);
 
-        System.out.println("size: " + listSearch.size());
+            System.out.println("value " + name);
+            List<ProductDTO> listSearch = productDao.search("%" + name + "%");
 
-        System.out.println("categpry page list" + listSearch);
-        request.setAttribute("listSearch", listSearch);
-        request.setAttribute("nameSearch", name);
-        request.setAttribute("size", listSearch.size());
+            System.out.println("size: " + listSearch.size());
 
-        request.setAttribute("messageSearch", listSearch.size() + " results for  " + " \" "+ name + " \"" + ".");
+            System.out.println("categpry page list" + listSearch);
+            request.setAttribute("listSearch", listSearch);
+            request.setAttribute("nameSearch", name);
+            request.setAttribute("size", listSearch.size());
+            request.setAttribute("messageSearch", listSearch.size() + " results for  " + " \" " + name + " \"" + ".");
 
-        request.getRequestDispatcher("ShopSearch.jsp").forward(request, response);
+            request.getRequestDispatcher("ShopSearch.jsp").forward(request, response);
+        } // do 'A' stuff
+        else if (null != request.getParameter("button_sort_clicked")) {
+            System.out.println("vao sort roi okoko");
+            ProductDao productDao = new ProductDao();
+            List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
+            CategoryDao catDao = new CategoryDao();
+            listCat = catDao.getList();
+            List<ProductDTO> listSortAsc = productDao.getListSortAsc();
+
+            System.out.println("list sort " + listSortAsc);
+            request.setAttribute("listSort", listSortAsc);
+            request.setAttribute("listCat", listCat);
+
+            request.getRequestDispatcher("ShopSort.jsp").forward(request, response);
+
+        } else if (null != request.getParameter("button_sortDesc_clicked")) {
+            System.out.println("vao sort roi okoko");
+            ProductDao productDao = new ProductDao();
+            List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
+            CategoryDao catDao = new CategoryDao();
+            listCat = catDao.getList();
+            List<ProductDTO> listSortDesc = productDao.getListSortDesc();
+
+            System.out.println("list sort " + listSortDesc);
+            request.setAttribute("listSort", listSortDesc);
+            request.setAttribute("listCat", listCat);
+
+            request.getRequestDispatcher("ShopSort.jsp").forward(request, response);
+
+        } else if (null != request.getParameter("button_sortName_clicked")) {
+            System.out.println("vao sort roi okoko");
+            ProductDao productDao = new ProductDao();
+            List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
+            CategoryDao catDao = new CategoryDao();
+            listCat = catDao.getList();
+            List<ProductDTO> listSortName = productDao.getListSortName();
+
+            System.out.println("list sort " + listSortName);
+            request.setAttribute("listSort", listSortName);
+            request.setAttribute("listCat", listCat);
+
+            request.getRequestDispatcher("ShopSort.jsp").forward(request, response);
+
+        } else {
+
+            ProductDao productDao = new ProductDao();
+            //category page
+            System.out.println("serach here");
+            String name = request.getParameter("searchBox");
+
+            List<CategoryDTO> listCat = new ArrayList<CategoryDTO>();
+            CategoryDao catDao = new CategoryDao();
+            listCat = catDao.getList();
+            request.setAttribute("listCat", listCat);
+
+            System.out.println("value " + name);
+            List<ProductDTO> listSearch = productDao.search("%" + name + "%");
+
+            System.out.println("size: " + listSearch.size());
+
+            System.out.println("categpry page list" + listSearch);
+            request.setAttribute("listSearch", listSearch);
+            request.setAttribute("nameSearch", name);
+            request.setAttribute("size", listSearch.size());
+            request.setAttribute("messageSearch", listSearch.size() + " results for  " + " \" " + name + " \"" + ".");
+
+            request.getRequestDispatcher("ShopSearch.jsp").forward(request, response);
+        }
+
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println("sort");
+        request.getRequestDispatcher("login.jsp").forward(request, response);
+
     }
 
     /**

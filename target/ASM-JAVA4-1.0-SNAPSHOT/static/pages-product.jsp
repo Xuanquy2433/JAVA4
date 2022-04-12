@@ -466,7 +466,7 @@
                                             <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-image"></span>
                                             <div class="form-group">
                                                 <label>Price</label>
-                                                <input type="text" id="txtPrice"  name="price" class="form-control" >
+                                                <input onchange="vali()" type="text" id="txtPrice"  name="price" class="form-control" >
                                             </div>
                                             <span style="color: red;font-size: 12px;font-style: italic" class="error" id="error-price"></span>
                                             <div class="form-group">
@@ -575,7 +575,7 @@
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product1.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product.js"></script>
 
 
 

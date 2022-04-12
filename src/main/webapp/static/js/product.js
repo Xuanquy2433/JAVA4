@@ -122,10 +122,6 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
             errorName.innerHTML = "Name required"
         } else if (txtImage === '') {
             errorImage.innerHTML = "Image required field";
-        } else if (txtPrice === '') {
-            errorPrice.innerHTML = "Price required"
-        } else if (!/^[0-9]+$/.test(txtPrice)) {
-            errorPrice.innerHTML = "Please only enter numeric characters only for your price! (Allowed input:0-9)";
         } else if (txtDescription === '') {
             errorDes.innerHTML = "Description required"
         } else {
@@ -210,6 +206,20 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
 
 }
 )
+
+function vali() {
+    const errorPrice = document.querySelector('#error-price');
+    const txtPrice = document.querySelector('#txtPrice').value
+
+    if (txtPrice === '') {
+        errorPrice.innerHTML = "Price required"
+    } else if (!/^[0-9]+$/.test(txtPrice)) {
+        errorPrice.innerHTML = "Please only enter numeric characters only for your price! (Allowed input:0-9)";
+    }
+    else {
+          errorPrice.innerHTML = "";
+    }
+}
 
 function validateForm() {
 

@@ -40,6 +40,14 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>Controller.Search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShopSortAsc</servlet-name>
+        <servlet-class>ShopSortAsc</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ContactController</servlet-name>
+        <servlet-class>Controller.ContactController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/UserController</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShopSortAsc</servlet-name>
+        <url-pattern>/ShopSortAsc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactController</servlet-name>
+        <url-pattern>/ContactController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

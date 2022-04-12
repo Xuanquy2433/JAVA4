@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="css/magnific-popup.css">
 
         <link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="css/shopSort.css">
 
         <link rel="stylesheet" href="css/ionicons.min.css">
 
@@ -150,13 +151,15 @@
             <form  method="post" style="width: 40%; margin-left: 390px;" class="input-group mb-3 col">
                 <input style="padding: 4px; border-radius: 8px 0px 0px 8px; border: 1px solid cyan; outline: none" type="text" name="searchBox" placeholder="Search name here" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button style="border-radius: 0px 8px 8px 0px; border: 1px solid cyan; outline: none" class="btn btn-outline-secondary" onclick="(e) => {
+                    <button name="button_search_clicked" value="ButtonSearch" style="border-radius: 0px 8px 8px 0px; border: 1px solid cyan; outline: none" class="btn btn-outline-secondary" onclick="(e) => {
                                 e.preventDefault();
                             }" type="submit"> <i class="fa-solid fa-magnifying-glass"></i>  </button>
 
                     <!--<a class="btn btn-outline-secondary"  href="${pageContext.request.contextPath}/ShopController?idSearch=5"> <i class="fa-solid fa-magnifying-glass"></i></a>-->
                 </div>
             </form>
+
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-lg-10 order-md-last">
@@ -407,6 +410,16 @@
                                 </c:forEach>
                             </ul>
                         </div>
+
+                        <form method="post" class="sidebar-box-2">
+                            <h2 class="heading mb-4"><a href="#">Sort</a></h2>
+                            <ul>
+                                <li><button name="button_sort_clicked" value="ButtonSort" class="sort" >Sort by price <i class="fa-solid fa-arrow-up"></i></button></li>
+                                <li><button name="button_sortDesc_clicked" value="ButtonSort" class="sort" >Sort by price <i class="fa-solid fa-arrow-down"></i></button></li>
+                                <li><button name="button_sortName_clicked" value="ButtonSort" class="sort" >Sort by name A-Z</button></li>
+                            </ul>
+                        </form>
+
                         <div class="sidebar-box-2">
                             <h2 class="heading mb-4"><a href="#">Jeans</a></h2>
                             <ul>
