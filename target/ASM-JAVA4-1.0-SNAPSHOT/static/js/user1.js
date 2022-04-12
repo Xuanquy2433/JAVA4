@@ -67,11 +67,40 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
                         showHideTransition: 'slide',
                         icon: 'success'
                     })
+                    resetForm();
 
 
-                    setTimeout(() => {
-                        location.reload();
-                    }, 2000)
+                    console.log('theRowId', txtId)
+                    var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
+                    console.log('remove', theRowId)
+                    theRowId.remove();
+                    $('#catTable tbody tr:first').after(`<tr data-id="${item.id}">
+                                                <td>
+                                                    <span class="custom-checkbox">
+                                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                                        <label for="checkbox1"></label>
+                                                    </span>
+                                                </td>
+                                                <td>${item.userName}</td>
+                                                <td>${item.password}</td>
+                                                <td>${item.email}</td>
+                                                <td>${item.role}</td>
+                                                <td>${item.name}</td>
+
+                                                <td>
+                                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditProduct(${item.id}, {
+                                                                'userName': '${item.userName}',
+                                                                'password': '${item.password}',
+                                                                'email': '${item.email}',
+                                                                'role': '${item.role}',
+                                                                'name': ' ${item.name}'',
+
+                                                            })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                    <a href="#deleteEmployeeModal567" class="delete" onclick="DeleteProduct(${item.id})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                </td>
+                                            </tr>`);
+                    resetForm();
+
 
                 })
                 .catch(function (error) {

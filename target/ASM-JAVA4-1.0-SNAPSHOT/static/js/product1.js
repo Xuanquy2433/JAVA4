@@ -67,9 +67,12 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
                         showHideTransition: 'slide',
                         icon: 'success'
                     })
+//                    setTimeout(() => {
+//                        location.reload();
+//                    }, 1000)
 
                     console.log("abcccc123")
-                    console.log('udate thanh cong')
+                    console.log('udate thanh cong ')
                     resetForm();
                     console.log('theRowId', txtId)
                     var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
@@ -230,15 +233,17 @@ function EditProduct(id, item) {
     catModal.show()
     console.log("click edit button123123");
 
-//    console.log("id ", categoryId);
+    console.log("id ", item.categoryId);
     console.log(item);
+
+
     document.querySelector('#txtName').value = item.name || ""
     document.querySelector('#txtImage').value = item.image || ""
     document.querySelector('#txtPrice').value = item.price || ""
     document.querySelector('#txtDesc').value = item.description || ""
     document.querySelector('#txtId').value = id || 0
 //    document.querySelector('#category').value = "category" || 0
-    document.getElementById('category').value = 168
+    document.getElementById('category').value = 169
     catModal.show()
 }
 
@@ -255,6 +260,10 @@ function  ResetValue() {
     document.querySelector('#txtImage').value = ""
     document.querySelector('#txtPrice').value = ""
     document.querySelector('#txtDesc').value = ""
+    document.querySelector('#error-name').value = ""
+    document.querySelector('#error-desc').value = ""
+    document.querySelector('#error-image').value = ""
+    document.querySelector('#error-price').value = ""
 }
 
 function DeleteProduct(id) {

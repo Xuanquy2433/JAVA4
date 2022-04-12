@@ -575,7 +575,7 @@
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/product1.js"></script>
 
 
 

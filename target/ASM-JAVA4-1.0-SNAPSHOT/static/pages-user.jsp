@@ -395,7 +395,7 @@
                                             System.out.println("list: " + request.getAttribute("list"));
                                         %>
                                         <c:forEach  items="${list}" var="cat" >
-                                            <tr>
+                                            <tr data-id="${cat.getId()}">
                                                 <td>
                                                     <span class="custom-checkbox">
                                                         <input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -417,7 +417,7 @@
                                                                 'name': ` ${cat.getName()}`,
 
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal567" class="delete" onclick="DeleteProduct(${cat.getId()})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModalll" class="delete" onclick="DeleteProduct(${cat.getId()})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -568,7 +568,7 @@
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/user1.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/user.js"></script>
 
 
 

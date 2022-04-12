@@ -143,7 +143,7 @@ public class ShopController extends HttpServlet {
         request.setAttribute("nameSearch", name);
         request.setAttribute("size", listSearch.size());
 
-        request.setAttribute("messageSearch", listSearch.size() + " results for " + name + ".");
+        request.setAttribute("messageSearch", listSearch.size() + " results for  " + " \" "+ name + " \"" + ".");
 
         request.getRequestDispatcher("ShopSearch.jsp").forward(request, response);
     }

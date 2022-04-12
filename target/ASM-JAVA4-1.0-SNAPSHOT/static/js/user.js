@@ -39,6 +39,7 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
             name: txtName,
 
         }
+        
         console.log('jsonObj', jsonObj)
         fetch('/ASM-JAVA4/AdminUserController', {
             method: 'put',
@@ -67,19 +68,14 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
                         showHideTransition: 'slide',
                         icon: 'success'
                     })
-
-
-                    console.log("abcccc123")
-                    console.log('udate thanh cong roi nha')
                     resetForm();
+
+
                     console.log('theRowId', txtId)
                     var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
                     console.log('remove', theRowId)
                     theRowId.remove();
-                    theRowId.remove();
-                    theRowId.remove();
-                    $('#catTable tbody tr:first').after(`
- <tr>
+                    $('#catTable tbody tr:first').after(`<tr data-id="${item.id}">
                                                 <td>
                                                     <span class="custom-checkbox">
                                                         <input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -98,14 +94,14 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
                                                                 'password': '${item.password}',
                                                                 'email': '${item.email}',
                                                                 'role': '${item.role}',
-                                                                'name': ' ${item.name}'',
+                                                                'name': ' ${item.name}',
 
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                                     <a href="#deleteEmployeeModal567" class="delete" onclick="DeleteProduct(${item.id})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
-                                            </tr>
-`);
-                    resetForm()
+                                            </tr>`);
+                    resetForm();
+
 
                 })
                 .catch(function (error) {
@@ -124,9 +120,9 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
         } else if (txtEmail === '') {
             errorEmail.innerHTML = "Email required"
         } else if (txtRole === '') {
-            txtRole.innerHTML = "Role required"
+            errorRole.innerHTML = "Role required"
         } else if (txtName === '') {
-            txtName.innerHTML = "Name required"
+            errorName.innerHTML = "Name required"
         } else {
             const jsonObj = {
                 userName: txtUserName,
@@ -167,7 +163,7 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
                         var theRowId = $(`#catTable tbody tr[data-id='${Number(txtId)}']`);
                         console.log('remove', theRowId)
                         theRowId.remove();
-                        $('#catTable tbody tr:first').after(`<tr>
+                        $('#catTable tbody tr:first').after(`<tr data-id="${item.id}">
                                                 <td>
                                                     <span class="custom-checkbox">
                                                         <input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -186,7 +182,7 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
                                                                 'password': '${item.password}',
                                                                 'email': '${item.email}',
                                                                 'role': '${item.role}',
-                                                                'name': ' ${item.name}'',
+                                                                'name': '${item.name}',
 
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                                     <a href="#deleteEmployeeModal567" class="delete" onclick="DeleteProduct(${item.id})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
