@@ -5,6 +5,7 @@
 package DTO;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -20,15 +21,20 @@ public class Cart {
 
     public boolean add(Item item) {
         try {
+            System.out.println("id" + item.getMaSp());
             if (cart.contains(item)) {
-                //update
-                Item currentItem = cart.get(cart.lastIndexOf(item));
+                // item hien tai
+                System.out.println("go here for update");
+                Item currentItem = cart.get(cart.indexOf(item));
                 currentItem.setSoLuong(currentItem.getSoLuong() + 1);
+                // update
             } else {
-                //add
+                System.out.println("go here for create");
                 cart.add(item);
+                // add
             }
             return true;
+
         } catch (Exception e) {
             return false;
         }
@@ -53,6 +59,14 @@ public class Cart {
         }
         return tongTien;
     }
+    
+     public float getTongTien() {
+       float tongTien =0;
+      for(Item item: cart){
+          tongTien+=item.getSoLuong()*item.getPrice();
+      }
+      return tongTien;
+    }
 
     public ArrayList<Item> getCart() {
         return cart;
@@ -60,6 +74,31 @@ public class Cart {
 
     public int getSize() {
         return cart.size();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.cart);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cart other = (Cart) obj;
+        if (!Objects.equals(this.cart, other.cart)) {
+            return false;
+        }
+        return true;
     }
 
 }

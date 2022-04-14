@@ -53,7 +53,9 @@
             -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
             background-color: #F5F5F5;
         }
-
+    
+        
+        
 
     </style>
     <body id="style-1" class="goto-here">
@@ -196,7 +198,7 @@
                                             <form action="CartController" method="post" class="bottom-area d-flex px-3">
                                                 <!--<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>-->
                                                 <input type="hidden" name="id" value="${cat.getId()}" >
-                                                <button  style="width: 100%; cursor: pointer" type="submit" value="add" name="cart"  class="btn btn-outline-success">Buy now<span><i class="ion-ios-cart ml-1"></i></span></button>
+                                                <button  style="width: 100%; cursor: pointer; color: white; background-color: #FFA45C" type="submit" value="add" name="cart"  class="btn btn-outline-success btnBuy">Buy now<span><i class="ion-ios-cart ml-1"></i></span></button>
                                                 <!--<button href="#"  value class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></button>-->
 
                                             </form>

@@ -253,7 +253,7 @@ function EditProduct(id, item) {
     document.querySelector('#txtDesc').value = item.description || ""
     document.querySelector('#txtId').value = id || 0
 //    document.querySelector('#category').value = "category" || 0
-    document.getElementById('category').value = 169
+    document.getElementById('category').value = 176
     catModal.show()
 }
 

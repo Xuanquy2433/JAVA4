@@ -37,30 +37,34 @@ public class CartController extends HttpServlet {
         String action = request.getParameter("cart");
         HttpSession session = request.getSession();
         if (action != null) {
-            //lay cart ra
-            //lay id ra
+            // lay cart ra
+            // lay id ra
             Cart cart = (Cart) session.getAttribute("cart");
             String id = request.getParameter("id");
             if (id != null) {
-                // lay detail cua product
+                // lay detail product
                 ProductDao dao = new ProductDao();
                 ProductDTO product = dao.getDetailByid(Integer.parseInt(id));
-                System.out.println("id product: " + product.getId());
-                // tao item
-                Item item = new Item(product.getId(), 1, product.getName(), product.getPrice(), product.getImage());
-
+                System.out.println("product" + product.getId());
+                //create Item
+                // public Item(int maSP, int soluong, String title, float price, String image)
+                Item item = new Item(product.getId(),
+                        1, product.getName(),
+                        product.getPrice(), product.getImage());
+                System.out.println("go here");
                 if (action.equals("add")) {
-                    //them 
-                    // kiem tra da co cart item chua
+                    // them
+                    // kiem tra xem da co cart item chua
                     if (cart == null) {
                         cart = new Cart();
                     }
                     cart.add(item);
+                } else {
+                    cart.remove(item);
                 }
-                //set lai cart cua sesion
+                // set lay cart session
                 session.setAttribute("cart", cart);
                 response.sendRedirect("cart.jsp");
-//                request.getRequestDispatcher("cart.jsp").forward(request, response);
             }
         }
     }

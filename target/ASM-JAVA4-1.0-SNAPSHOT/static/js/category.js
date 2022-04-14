@@ -75,10 +75,10 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
                                                 <td>
                                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditCategory(${item.id}, {
                                                                 'name': '${item.name}',
-                                                                'description': ' ${item.description}',
+                                                                'description': '${item.description}',
                                                                 'image': '${item.image}'
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModalll" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
 `);
@@ -152,10 +152,10 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
                                                 <td>
                                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" onclick="EditCategory(${item.id}, {
                                                                 'name': '${item.name}',
-                                                                'description': ' ${item.description}',
+                                                                'description': '${item.description}',
                                                                 'image': '${item.image}'
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModallll" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
 `);

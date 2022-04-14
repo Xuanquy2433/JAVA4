@@ -4,6 +4,8 @@
  */
 package DTO;
 
+import java.util.Objects;
+
 /**
  *
  * @author XuanQuy
@@ -65,6 +67,35 @@ public class Item {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + this.maSp;
+        hash = 47 * hash + this.soLuong;
+        hash = 47 * hash + Objects.hashCode(this.title);
+        hash = 47 * hash + Float.floatToIntBits(this.price);
+        hash = 47 * hash + Objects.hashCode(this.image);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+        if (this.maSp != other.maSp) {
+            return false;
+        }
+        return true;
     }
 
 }
