@@ -78,7 +78,7 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
                                                                 'description': '${item.description}',
                                                                 'image': '${item.image}'
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModalll" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModalll" class="delete" onclick="DeleteCategory(${item.id})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
 `);
@@ -93,6 +93,7 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
 
     } else {
         //case post
+        
         console.log("case post")
         if (txtName === '') {
             errorName.innerHTML = "Name required"
@@ -155,7 +156,7 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
                                                                 'description': '${item.description}',
                                                                 'image': '${item.image}'
                                                             })" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a href="#deleteEmployeeModallll" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                    <a href="#deleteEmployeeModallll" class="delete" onclick="DeleteCategory(${item.id})" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                                 </td>
                                             </tr>
 `);

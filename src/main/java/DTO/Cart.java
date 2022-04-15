@@ -19,14 +19,54 @@ public class Cart {
         this.cart = new ArrayList<Item>();
     }
 
-    public boolean add(Item item) {
+    public boolean add(Item item, int so) {
         try {
             System.out.println("id" + item.getMaSp());
             if (cart.contains(item)) {
                 // item hien tai
                 System.out.println("go here for update");
                 Item currentItem = cart.get(cart.indexOf(item));
-                currentItem.setSoLuong(currentItem.getSoLuong() + 1);
+                currentItem.setSoLuong(currentItem.getSoLuong() + so);
+                // update
+            } else {
+                System.out.println("go here for create");
+                cart.add(item);
+                // add
+            }
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+  public boolean add1(Item item) {
+        try {
+            System.out.println("id" + item.getMaSp());
+            if (cart.contains(item)) {
+                // item hien tai
+                System.out.println("go here for update");
+                Item currentItem = cart.get(cart.indexOf(item));
+                currentItem.setSoLuong(item.getSoLuong());
+                // update
+            } else {
+                System.out.println("go here for create");
+                cart.add(item);
+                // add
+            }
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean removeQuantity(Item item) {
+        try {
+            System.out.println("id" + item.getMaSp());
+            if (cart.contains(item)) {
+                // item hien tai
+                System.out.println("go here for update");
+                Item currentItem = cart.get(cart.indexOf(item));
+                currentItem.setSoLuong(currentItem.getSoLuong() - 1);
                 // update
             } else {
                 System.out.println("go here for create");
@@ -59,13 +99,13 @@ public class Cart {
         }
         return tongTien;
     }
-    
-     public float getTongTien() {
-       float tongTien =0;
-      for(Item item: cart){
-          tongTien+=item.getSoLuong()*item.getPrice();
-      }
-      return tongTien;
+
+    public float getTongTien() {
+        float tongTien = 0;
+        for (Item item : cart) {
+            tongTien += item.getSoLuong() * item.getPrice();
+        }
+        return tongTien;
     }
 
     public ArrayList<Item> getCart() {

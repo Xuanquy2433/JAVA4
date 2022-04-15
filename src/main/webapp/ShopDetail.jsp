@@ -38,21 +38,38 @@
         <link rel="shortcut icon" href="images/dawn.png" />
 
         <script src="https://kit.fontawesome.com/a36bda6cfe.js" crossorigin="anonymous"></script>
-   <style>
-        #style-1::-webkit-scrollbar {
-            width: 6px;
-            background-color: #F5F5F5;
-        }
-        #style-1::-webkit-scrollbar-thumb {
-            background-color: #000000;
-        }
-        #style-1::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-            background-color: #F5F5F5;
-        }
+        <style>
+            #style-1::-webkit-scrollbar {
+                width: 6px;
+                background-color: #F5F5F5;
+            }
+            #style-1::-webkit-scrollbar-thumb {
+                background-color: #000000;
+            }
+            #style-1::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                background-color: #F5F5F5;
+            }
 
+            .product-details button {
 
-    </style>
+                height: 40px !important;
+                text-align: center;
+                border: 1px solid rgba(0, 0, 0, 0.1) !important;
+                color: #ffa45c;
+                padding: 6px 20px 20px 20px;
+                background-color: black;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                -ms-border-radius: 0;
+                border-radius: 0;
+                font-size: 14px;
+            }
+           .divBtn:hover{
+                background-color: white;
+            }
+
+        </style>
     </head>
     <body id="style-1" class="goto-here">
         <div class="py-1 bg-black">
@@ -66,7 +83,7 @@
                             </div>
                             <div class="col-md pr-4 d-flex topper align-items-center">
                                 <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                                 <span class="text">xuanquy@email.com</span>
+                                <span class="text">xuanquy@email.com</span>
                             </div>
                             <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                                 <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -141,73 +158,82 @@
 
         <section class="ftco-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 mb-5 ftco-animate">
-                        <a href="${detail.getImage()}" class="image-popup"><img style="height: 800px" src="${detail.getImage()}" class="img-fluid" alt="Colorlib Template"></a>
-                    </div>
-                    <div class="col-lg-6 product-details pl-md-5 ftco-animate">
-                        <h3>${detail.getName()}</h3>
-                        <div class="rating d-flex">
-                            <p class="text-left mr-4">
-                                <a href="#" class="mr-2">5.0</a>
-                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            </p>
-                            <p class="text-left mr-4">
-                                <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
-                            </p>
-                            <p class="text-left">
-                                <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
-                            </p>
+                <form  action="CartController" method="post" >
+
+                    <div class="row">
+                        <div class="col-lg-6 mb-5 ftco-animate">
+                            <a href="${detail.getImage()}" class="image-popup"><img style="height: 800px" src="${detail.getImage()}" class="img-fluid" alt="Colorlib Template"></a>
                         </div>
-                        <h4 style="color: goldenrod" ><span class="price"> $ <fmt:formatNumber value = "${detail.getPrice()}" 
-                                          type = "currency"/> </span></h4>
+                        <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+                            <h3>${detail.getName()}</h3>
+                            <div class="rating d-flex">
+                                <p class="text-left mr-4">
+                                    <a href="#" class="mr-2">5.0</a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                </p>
+                                <p class="text-left mr-4">
+                                    <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
+                                </p>
+                                <p class="text-left">
+                                    <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
+                                </p>
+                            </div>
+                            <h4 style="color: goldenrod" ><span class="price"> $ <fmt:formatNumber value = "${detail.getPrice()}" 
+                                              type = "currency"/> </span></h4>
 
 
-                        <p>Description: ${detail.getDescription()}</p>
-                        <p>Category: <a href="category?id=${catDetail.getId()}">${catDetail.getName()}</a></p>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
-                        </p>
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <div class="form-group d-flex">
-                                    <div class="select-wrap">
-                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Small</option>
-                                            <option value="">Medium</option>
-                                            <option value="">Large</option>
-                                            <option value="">Extra Large</option>
-                                        </select>
+                            <p>Description: ${detail.getDescription()}</p>
+                            <p>Category: <a href="category?id=${catDetail.getId()}">${catDetail.getName()}</a></p>
+                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                            <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
+                            </p>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <div class="form-group d-flex">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Small</option>
+                                                <option value="">Medium</option>
+                                                <option value="">Large</option>
+                                                <option value="">Extra Large</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="w-100"></div>
+                                <div class="input-group col-md-6 d-flex mb-3">
+                                    <span class="input-group-btn mr-2">
+                                        <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
+                                            <i class="ion-ios-remove"></i>
+                                        </button>
+                                    </span>
+                                    <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                                    <span class="input-group-btn ml-2">
+                                        <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                                            <i class="ion-ios-add"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-md-12">
+                                    <p style="color: #000;">80 piece available</p>
+                                </div>
                             </div>
-                            <div class="w-100"></div>
-                            <div class="input-group col-md-6 d-flex mb-3">
-                                <span class="input-group-btn mr-2">
-                                    <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
-                                        <i class="ion-ios-remove"></i>
-                                    </button>
-                                </span>
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                                <span class="input-group-btn ml-2">
-                                    <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-                                        <i class="ion-ios-add"></i>
-                                    </button>
-                                </span>
+
+                            <input type="hidden" name="id" value="${detail.getId()}" >
+                            <div class="divBtn" style="background-color: black; color: white; width: 23%; border-radius: 7px ">
+                                <button  style="border: 0px solid ;color: white; outline: none; cursor: pointer;" type="submit" value="add" name="cart"  >Add to cart</button>
+
                             </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-12">
-                                <p style="color: #000;">80 piece available</p>
-                            </div>
+                            </form>
+
                         </div>
-                        <p><a href="cart.jsp" class="btn btn-black py-3 px-5">Add to Cart</a></p>
                     </div>
-                </div>
             </div>
         </section>
 

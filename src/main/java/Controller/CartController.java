@@ -34,7 +34,15 @@ public class CartController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         String action = request.getParameter("cart");
+        String quantity = request.getParameter("quantity");
+        if (quantity == null) {
+            quantity = "1";
+        }
+
+        System.out.println("quantity " + quantity);
         HttpSession session = request.getSession();
         if (action != null) {
             // lay cart ra
@@ -49,7 +57,7 @@ public class CartController extends HttpServlet {
                 //create Item
                 // public Item(int maSP, int soluong, String title, float price, String image)
                 Item item = new Item(product.getId(),
-                        1, product.getName(),
+                        Integer.parseInt(quantity), product.getName(),
                         product.getPrice(), product.getImage());
                 System.out.println("go here");
                 if (action.equals("add")) {
@@ -58,7 +66,15 @@ public class CartController extends HttpServlet {
                     if (cart == null) {
                         cart = new Cart();
                     }
-                    cart.add(item);
+                    cart.add(item, Integer.parseInt(quantity));
+                } else if (action.equals("remove")) {
+                    System.out.println("xóaaaaaaaaaaaa");
+                    if (cart.getSize() == 1) {
+                        System.out.println("sttt" + cart.getSize());
+                        cart.remove(item);
+                    }
+                    cart.removeQuantity(item);
+
                 } else {
                     cart.remove(item);
                 }

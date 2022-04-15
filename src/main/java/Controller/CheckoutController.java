@@ -59,29 +59,8 @@ public class CheckoutController extends HttpServlet {
                 dao.insert(order);
                 System.out.println("NAME: " + order.getCustomerName());
 
-                try ( PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Servlet HomeServlet</title>");
-
-                    out.println("</head>");
-                    out.println("<body style='font-family: Arial, Helvetica, sans-serif;' >");
-
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Checkout Success');");
-                    out.println("location='/ASM-JAVA4/ShopController';");
-                    out.println("</script>");
-
-                    out.println("</div>");
-
-                    out.println("</body>");
-                    out.println("</html>");
-                }
-
                 session.removeAttribute("cart");
-                response.sendRedirect("ShopController");
+                response.sendRedirect("SuccessController");
             } else {
                 response.sendRedirect("ShopController");
             }

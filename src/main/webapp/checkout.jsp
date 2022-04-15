@@ -7,11 +7,12 @@
 <%@page import="DTO.Item"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DTO.Cart"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,7 +172,7 @@
                                 <tbody>
 
                                     <tr class="text-center">
-                                        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                        <!--<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>-->
                                         <td class="image-prod"><div class="img" style="background-image:url(<%= item.getImage()%>);"></div></td>
                                                                                <!--<td class="image-prod"> <img src="<%= item.getImage()%>" alt="alt"/> </td>-->
 
