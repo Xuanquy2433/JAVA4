@@ -80,5 +80,13 @@
 
             <a style="margin-top: 50px;color: #FFA45C;font-size: 18px" class="dropdown-item" href="${pageContext.request.contextPath}/ShopController">Back to shop</a>
         </div>
+        <script >
+
+
+            setTimeout(() => {
+                window.location.href = "${pageContext.request.contextPath}/ShopController"
+            }, 3000)
+
+        </script>
     </body>
 </html>

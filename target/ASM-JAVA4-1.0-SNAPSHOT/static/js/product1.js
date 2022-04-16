@@ -17,7 +17,6 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
     const categoryId = document.querySelector('#category').value
 
 
-
     const txtId = document.querySelector('#txtId').value || null;
     const errorName = document.querySelector('#error-name')
     const errorDes = document.querySelector('#error-desc')
@@ -26,6 +25,8 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
 
     if (txtId) {
 //case update
+
+
         console.log("case update")
         console.log("id" + categoryId);
         if (!/^[0-9]+$/.test(txtPrice)) {
@@ -124,6 +125,8 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
             errorImage.innerHTML = "Image required field";
         } else if (txtDescription === '') {
             errorDes.innerHTML = "Description required"
+        } else if (txtPrice === '') {
+            errorPrice.innerHTML = "Price required"
         } else {
             const jsonObj = {
                 name: txtName,
@@ -215,9 +218,8 @@ function vali() {
         errorPrice.innerHTML = "Price required"
     } else if (!/^[0-9]+$/.test(txtPrice)) {
         errorPrice.innerHTML = "Please only enter numeric characters only for your price! (Allowed input:0-9)";
-    }
-    else {
-          errorPrice.innerHTML = "";
+    } else {
+        errorPrice.innerHTML = "";
     }
 }
 
@@ -253,7 +255,7 @@ function EditProduct(id, item) {
     document.querySelector('#txtDesc').value = item.description || ""
     document.querySelector('#txtId').value = id || 0
 //    document.querySelector('#category').value = "category" || 0
-    document.getElementById('category').value = 169
+    document.getElementById('category').value = 176
     catModal.show()
 }
 

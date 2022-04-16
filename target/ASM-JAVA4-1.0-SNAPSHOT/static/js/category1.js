@@ -93,7 +93,7 @@ document.getElementById("categoryForm").addEventListener('submit', (event) => {
 
     } else {
         //case post
-        
+
         console.log("case post")
         if (txtName === '') {
             errorName.innerHTML = "Name required"
@@ -179,6 +179,10 @@ function resetForm() {
     document.getElementById('categoryForm').reset();
 }
 function EditCategory(id, item) {
+    
+    document.querySelector('#error-name').innerHTML = ""
+    document.querySelector('#error-desc').innerHTML = ""
+    document.querySelector('#error-image').innerHTML = ""
     console.log("click edit button");
     var catModal
     catModal = new bootstrap.Modal(document.getElementById('addEmployeeModal'), {

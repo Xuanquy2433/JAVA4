@@ -17,7 +17,6 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
     const categoryId = document.querySelector('#category').value
 
 
-
     const txtId = document.querySelector('#txtId').value || null;
     const errorName = document.querySelector('#error-name')
     const errorDes = document.querySelector('#error-desc')
@@ -26,6 +25,8 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
 
     if (txtId) {
 //case update
+
+
         console.log("case update")
         console.log("id" + categoryId);
         if (!/^[0-9]+$/.test(txtPrice)) {
@@ -124,6 +125,8 @@ document.getElementById("productForm").addEventListener('submit', (event) => {
             errorImage.innerHTML = "Image required field";
         } else if (txtDescription === '') {
             errorDes.innerHTML = "Description required"
+        } else if (txtPrice === '') {
+            errorPrice.innerHTML = "Price required"
         } else {
             const jsonObj = {
                 name: txtName,
@@ -215,9 +218,8 @@ function vali() {
         errorPrice.innerHTML = "Price required"
     } else if (!/^[0-9]+$/.test(txtPrice)) {
         errorPrice.innerHTML = "Please only enter numeric characters only for your price! (Allowed input:0-9)";
-    }
-    else {
-          errorPrice.innerHTML = "";
+    } else {
+        errorPrice.innerHTML = "";
     }
 }
 
@@ -231,10 +233,22 @@ function validateForm() {
 
 }
 
+function resetErr() {
+    document.querySelector('#error-name').value = ""
+    document.querySelector('#error-desc').value = ""
+    document.querySelector('#error-image').value = ""
+    document.querySelector('#error-price').value = ""
+}
+
 function resetForm() {
     document.getElementById('productForm').reset();
 }
 function EditProduct(id, item) {
+    document.querySelector('#error-name').innerHTML = ""
+    document.querySelector('#error-desc').innerHTML = ""
+    document.querySelector('#error-image').innerHTML = ""
+    document.querySelector('#error-price').innerHTML = ""
+
     console.log("click edit button");
     var catModal
     catModal = new bootstrap.Modal(document.getElementById('addEmployeeModal'), {
@@ -242,6 +256,7 @@ function EditProduct(id, item) {
     })
     catModal.show()
     console.log("click edit button123123");
+
 
     console.log("id ", item.categoryId);
     console.log(item);
@@ -266,14 +281,17 @@ function abc() {
 }
 
 function  ResetValue() {
+    console.log("reset value");
+
+    document.getElementById("error-name").innerHTML = ""
     document.querySelector('#txtName').value = ""
     document.querySelector('#txtImage').value = ""
     document.querySelector('#txtPrice').value = ""
     document.querySelector('#txtDesc').value = ""
-    document.querySelector('#error-name').value = ""
-    document.querySelector('#error-desc').value = ""
-    document.querySelector('#error-image').value = ""
-    document.querySelector('#error-price').value = ""
+    document.querySelector('#error-name').innerHTML = ""
+    document.querySelector('#error-desc').innerHTML = ""
+    document.querySelector('#error-image').innerHTML = ""
+    document.querySelector('#error-price').innerHTML = ""
 }
 
 function DeleteProduct(id) {

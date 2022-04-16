@@ -227,7 +227,7 @@
 
                             <input type="hidden" name="id" value="${detail.getId()}" >
                             <div class="divBtn" style="background-color: black; color: white; width: 23%; border-radius: 7px ">
-                                <button  style="border: 0px solid ;color: white; outline: none; cursor: pointer;" type="submit" value="add" name="cart"  >Add to cart</button>
+                                <button  style="border: 0px solid ;color: white; outline: none; cursor: pointer;" type="submit" value="add" name="cart"  >Add to cart   </button>
 
                             </div>
                             </form>

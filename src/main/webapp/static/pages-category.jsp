@@ -592,7 +592,7 @@
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.toast.min.js"></script>
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/category1.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/category.js"></script>
 
 
 

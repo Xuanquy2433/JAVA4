@@ -174,7 +174,7 @@
                                     <tr class="text-center">
                                     <form action="CartController" method="post">
                                         <input type="hidden" name="id" value="<%= item.getMaSp()%>"/>
-                                        <td class="product-remove"><button  style="padding: 0px 10px 0px 10px;cursor: pointer" type="submit" name="cart" value="remove"><span class="ion-ios-close"></span></button></td>
+                                        <td class="product-remove"><button  style="padding: 0px 10px 0px 10px;cursor: pointer" type="submit" name="cart" ><span class="ion-ios-close"></span></button></td>
                                     </form>
                                     <td class="image-prod"><div class="img" style="background-image:url(<%= item.getImage()%>);"></div></td>
                                                                            <!--<td class="image-prod"> <img src="<%= item.getImage()%>" alt="alt"/> </td>-->

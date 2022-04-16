@@ -69,6 +69,7 @@ public class CartController extends HttpServlet {
                     cart.add(item, Integer.parseInt(quantity));
                 } else if (action.equals("remove")) {
                     System.out.println("xóaaaaaaaaaaaa");
+                    // bug
                     if (cart.getSize() == 1) {
                         System.out.println("sttt" + cart.getSize());
                         cart.remove(item);
